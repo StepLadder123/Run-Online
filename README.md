@@ -68,8 +68,10 @@ Run-on
 
 | Column       | Type       | Options                    |
 | ------------ | ---------- | -------------------------- |
-| distance     | integer    | null: false                |
-| time         | time       | null: false                |
+| distance     | float      | null: false                |
+| hour         | integer    | null: false                |
+| minute       | integer    | null: false                |
+| second       | integer    | null: false                |
 | area_id      | integer    | null: false                |
 | date         | date       | null: false                |
 | private      | boolean    |                            |

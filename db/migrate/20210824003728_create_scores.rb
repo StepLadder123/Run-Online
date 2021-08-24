@@ -1,8 +1,10 @@
 class CreateScores < ActiveRecord::Migration[6.0]
   def change
     create_table :scores do |t|
-      t.integer :distance,    null: false
-      t.time :time,           null: false
+      t.float :distance,      null: false
+      t.integer :hour,        null: false, default: 0
+      t.integer :minute,      null: false, default: 0
+      t.integer :second,      null: false, default: 0
       t.integer :area_id,     null: false
       t.date :date,           null: false
       t.boolean :private
