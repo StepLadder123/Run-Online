@@ -66,15 +66,15 @@ Run-on
 
 ## scoreテーブル
 
-| Column       | Type      | Options                    |
-| ------------ | --------- | -------------------------- |
-| distance     | integer   | null: false                |
-| time         | time      | null: false                |
-| area_id      | integer   | null: false                |
-| date         | date      | null: false                |
-| private      | boolean   |                            |
-| challenge_id | integer   |                            |
-| user_id      | reference | null: false, foreign: true |
+| Column       | Type       | Options                    |
+| ------------ | ---------- | -------------------------- |
+| distance     | integer    | null: false                |
+| time         | time       | null: false                |
+| area_id      | integer    | null: false                |
+| date         | date       | null: false                |
+| private      | boolean    |                            |
+| challenge_id | integer    |                            |
+| user_id      | references | null: false, foreign: true |
 
 ### Association
 
@@ -85,11 +85,11 @@ Run-on
 
 ## commentテーブル
 
-| Column   | Type      | Options                    |
-| -------- | --------- | -------------------------- |
-| text     | text      | null: false                |
-| user_id  | reference | null: false, foreign: true |
-| score_id | reference | null: false, foreign: true |
+| Column   | Type       | Options                    |
+| -------- | ---------- | -------------------------- |
+| text     | text       | null: false                |
+| user_id  | references | null: false, foreign: true |
+| score_id | references | null: false, foreign: true |
 
 ### Association
 
@@ -98,11 +98,11 @@ Run-on
 
 ## courseテーブル
 
-| Column   | Type      | Options                    |
-| -------- | --------- | -------------------------- |
-| feature  | text      |                            |
-| user_id  | reference | null: false, foreign: true |
-| score_id | reference | null: false, foreign: true |
+| Column   | Type       | Options                    |
+| -------- | ---------- | -------------------------- |
+| feature  | text       |                            |
+| user_id  | references | null: false, foreign: true |
+| score_id | references | null: false, foreign: true |
 
 ### Association
 
@@ -112,10 +112,10 @@ Run-on
 
 ## challengeテーブル
 
-| Column    | Type      | Options                    |
-| --------- | --------- | -------------------------- |
-| result    | boolean   |                            |
-| course_id | reference | null: false, foreign: true |
+| Column    | Type       | Options                    |
+| --------- | ---------- | -------------------------- |
+| result    | boolean    |                            |
+| course_id | references | null: false, foreign: true |
 
 ### Association
 
