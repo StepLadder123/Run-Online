@@ -1,0 +1,41 @@
+<%= render "shared/main_header" %>
+
+<%# スコア一覧 %>
+<div class='score-contents'>
+  <ul class='score-lists'>
+    <% if @scores.exists? %>
+      <% @scores.each do |score| %>
+        <li class='list'>
+          <%= link_to score_path(score.id) do %>
+          <div class='score-img-content'>
+            <%= image_tag score.image, class: "score-img" %>
+          </div>
+          <div class='score-info'>
+            <h3 class='score-distance'>
+              <%= sprintf("%1.2f", score.distance) %><span class="unit"> km</span>
+            </h3>
+            <h3 class='score-time'>
+              <%= "#{score.hour}:#{sprintf("%02d", score.minute)}:#{sprintf("%02d", score.second)}" %>
+            </h3>
+            <h3 class='score-time-per-km'>
+              <%= "#{((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor}:#{sprintf("%02d", ((((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60) - ((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor) * 60).round)}" %>
+            </h3>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+            <div class="score-nickname">
+              <%= score.user_id %>
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% else %>
+      さぁ走りだそう
+    <% end %>
+  </ul>
+</div>
+<%# /スコア一覧 %>
+
+<%= render "shared/main_footer" %>
