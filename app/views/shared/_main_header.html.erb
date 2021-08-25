@@ -1,20 +1,27 @@
 <header class='top-page-header'>
-  <div class='search-bar-contents'>
+  <div class='header-left-contents'>
     <%= link_to "Run-Online",  "/", class: "site-logo" %>
-    <%# link_to "検索画面へ", search_items_path, class:"detail-search" %>
   </div>
-  <div class='nav'>
-    <ul class='menu'>
-      <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li>
-        <li><%= link_to 'アクティビティ登録', new_score_path, class: "score-new" %> </li>
-        <li><%= link_to 'アクティビティ一覧', "#", class: "score-all" %> </li>
-        <li><%= link_to 'ランキング', "#", class: "score-ranking" %> </li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
-      <% else %>
+  <div class='header-right-contents'>
+    <% if user_signed_in? %>
+      <div class="menu-login">
+        <input type="checkbox" id="menu-check" class="menu-checkbox">
+        <label for="menu-check" class="menu-btn"><span></span></label>
+        <div class="menu-login-contents">
+          <ul class='menu-login-list'>
+            <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li>
+            <li><%= link_to 'アクティビティ登録', new_score_path, class: "score-new" %> </li>
+            <li><%= link_to 'アクティビティ一覧', "#", class: "score-all" %> </li>
+            <li><%= link_to 'ランキング', "#", class: "score-ranking" %> </li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <ul class='menu-logout-list'>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   </div>
 </header>
