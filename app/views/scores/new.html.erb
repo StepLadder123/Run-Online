@@ -13,7 +13,7 @@
     <%# 地図画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        商品画像
+        ルート画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
@@ -50,16 +50,14 @@
         <label class="form-text">タイム</label>
         <span class="indispensable">必須</span>
       </div>
-      <%# f.text_field :time, class:"input-default", id:"time" %>
+      <div class="form-time">
         <%= f.number_field :hour, class:"input-default", id:"time", min: 0, max: 23 %>
-        <%# <input type="number" class="input-default", id="input-hour", min="0", max="23" value="0"> %>
         <span class="unit">時間</span>
         <%= f.number_field :minute, class:"input-default", id:"time", min: 0, max: 59 %>
-        <%# <input type="number" class="input-default", id="input-minute", min="0", max="59", value="0"> %>
         <span class="unit">分</span>
         <%= f.number_field :second, class:"input-default", id:"time", min: 0, max: 59 %>
-        <%# <input type="number" class="input-default", id="input-second", min="0", max="59", value="0"> %>
         <span class="unit">秒</span>
+      </div>
     </div>
     <%# /タイム %>
     <%# エリア %>
@@ -82,7 +80,7 @@
     <%# 非公開設定 %>
     <div class="form-group">
       <div class="form-check-box">
-        アクティビティを公開しない場合はチェック<%= f.check_box :private, class:"input-default", id:"private" %>
+        <%= f.check_box :private, class:"input-default", id:"private" %><p class="input-info">アクティビティを公開しない場合はチェック</p>
       </div>
     </div>
     <%# /非公開設定 %>
@@ -91,9 +89,9 @@
         入力内容に誤りがなければ[登録]をクリック。
       </h2>
     </div>
-    <div class='register-btn'>
-      <%= f.submit "登録" ,class:"next-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <div class='transition-btn'>
+      <%= f.submit "登録" ,class:"next-btn" %><br>
+      <%= link_to 'もどる', root_path, class:"back-btn" %>
     </div>    
   <% end %>
 </div>
