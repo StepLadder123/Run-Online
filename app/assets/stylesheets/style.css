@@ -204,7 +204,8 @@
   margin-top: 5px;
 }
 
-.input-info {
+.input-info,
+.comment-warn {
   font-size: 14px;
   margin-left: 5px;
 }
@@ -314,7 +315,7 @@
 
 .detail-item {
   width: 30%;
-  background-color: #0ac;
+  background-color: skyblue;
   border: 1px solid #dedede;
   font-size: 14px;
   text-align: center;
@@ -326,6 +327,105 @@
   border: 1px solid #dedede;
   font-size: 14px;
 }
+
+.comment-box {
+  display: flex;
+}
+
+.comment-title {
+  color: #0ac;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.my-comment {
+  text-align: right;
+  width: 100%;
+  overflow: hidden;
+}
+
+.comment-my-nickname {
+  float: right;
+  margin-left: -50px;
+  width: 40px;
+}
+
+.comment-my-text {
+  display: inline-block;
+  position: relative; 
+  margin: 0 55px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #3CCACE;
+  font-size: 15px;
+}
+
+.comment-my-text:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #3CCACE;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.guests-comment {
+  width: 100%;
+  overflow: hidden;
+}
+
+.comment-guests-nickname {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.comment-guests-text {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 55px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #ddd;
+}
+
+.comment-guests-text:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #ddd;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.comment-text {
+  width: 80%;
+  height: 50px;
+  padding: 10px;
+  border: solid 2px #dedede;
+  resize: none;
+}
+
+.comment-btn {
+  background-color: #3CCACE;
+  border: 1px solid #2daeea;
+  color: #fff;
+  width: 20%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  border-radius: 100px;
+  margin: auto 5px;
+}
+/* comment-warn◯ */
 
 /* /scores/show */
 
