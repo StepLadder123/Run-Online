@@ -115,8 +115,43 @@
 }
 /* /ヘッダー */
 
+/* 下部ボタン */
+.transition-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-content {
+  margin: 5vh 0;
+}
+
+.next-btn {
+  background: skyblue;
+  border: 1px solid #2daeea;
+  padding: 15px 20%;
+  text-decoration: none;
+  color: #333
+}
+
+.back-btn {
+  background: #aaa;
+  border: 1px solid #999;
+  padding: 15px 20%;
+  text-decoration: none;
+  color: #333
+}
+
+.delete-btn {
+  background: rgb(212, 116, 116);
+  border: 1px solid rgb(226, 63, 63);
+  padding: 15px 20%;
+  text-decoration: none;
+  color: #333
+}
+
+/* /下部ボタン */
+
 /* フォーム */
-/* 共通 */
 .form-wrap {
   padding: 5vh 5vw;
   width: 60%;
@@ -174,31 +209,6 @@
   margin-left: 5px;
 }
 
-/* 下部ボタン */
-.transition-btn {
-  width: 100%;
-  text-align: center;
-}
-
-.next-btn {
-  background: skyblue;
-  border: 1px solid #2daeea;
-  width: 60%;
-  height: 50px;
-  font-size: 20px;
-  margin: 4vh 0;
-}
-
-.back-btn {
-  background: #aaa;
-  border: 1px solid #999;
-  padding: 15px 20%;
-  text-decoration: none;
-}
-
-/* /下部ボタン */
-/* /共通 */
-
 .img-upload {
   width: 60%;
   margin: 0 auto;
@@ -244,7 +254,80 @@
   width: 10vw;
   padding-left: 20px;
 }
+
+.no-score {
+  width: 100vw;
+  height: calc(100vh - 125px);
+  background: linear-gradient(to top, rgba(151, 217, 225, 0.8) 0%, rgba(240, 240, 240, 0.8) 100%),url(top-page.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+.no-score-content {
+  padding: 10vh;
+}
+
+.no-score-text {
+  font-size: 5vw;
+  font-weight: bold;
+  font-family: 'HiraMinProN-W6';
+  color: #333;
+}
+
+.no-score-btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20vh;
+}
+
+.no-score-btn-sign-in,
+.no-score-btn-sign-up,
+.no-score-btn-new-score {
+  background: skyblue;
+  border: 1px solid #2daeea;
+  width: 25%;
+  height: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  line-height: 50px;
+  padding: 15px 10vw;
+}
 /* /scores/index */
+
+/* scores/show */
+.score-show {
+  background-color: #f8f8f8;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh 0;
+}
+
+.detail-table {
+  margin-bottom: 30px;
+  width: 60vw;
+}
+
+.detail-item {
+  width: 30%;
+  background-color: #0ac;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+}
+
+.detail-value {
+  width: 70%;
+  padding: 20px;
+  border: 1px solid #dedede;
+  font-size: 14px;
+}
+
+/* /scores/show */
 
 /* フッター */
 .top-page-footer {
