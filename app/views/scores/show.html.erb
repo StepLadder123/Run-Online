@@ -1,0 +1,46 @@
+<%= render "shared/main_header" %>
+
+<div class="score-show">
+  <div class="score-img-content">
+    <%= image_tag @score.image, class: "score-img" %>
+  </div>
+  <table class="detail-table">
+    <tbody>
+      <tr>
+        <th class="detail-item">ランナー</th>
+        <td class="detail-value"><%= @score.user.nickname %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">日付</th>
+        <td class="detail-value"><%= @score.date %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">場所</th>
+        <td class="detail-value"><%= @score.area.name %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">距離</th>
+        <td class="detail-value"><%= "#{@score.distance} km" %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">タイム</th>
+        <td class="detail-value"><%= "#{@score.hour}:#{@score.minute}:#{@score.second}" %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">ラップ</th>
+        <td class="detail-value"><%= "#{((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60).floor}:#{sprintf("%02d", ((((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60) - ((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60).floor) * 60).round)} min/km" %></td>
+      </tr>
+    </tbody>
+  </table> 
+
+  <%# いいね、コメント機能 %>
+
+  <div class='transition-btn'>
+    <% if current_user.id == @score.user_id %>
+      <%= link_to "コース登録をする", class:"next-btn" %><br>
+      <%= link_to '削除する', root_path, class:"delete-btn" %><br>
+    <% end %>
+    <%= link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+</div>
+<%= render "shared/main_footer" %>
