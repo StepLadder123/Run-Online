@@ -33,7 +33,52 @@
     </tbody>
   </table> 
 
-  <%# いいね、コメント機能 %>
+  <%# いいね機能 %>
+
+  <div class="comments">
+    <h4 class="comment-title">
+      <% if @comments.exists? %>
+        ＜コメント一覧＞
+      <% else %>
+        まだコメントはありません
+      <% end %>
+    </h4>
+    <% @comments.each do |comment| %>
+      <div class="comment-lists">
+        <% if comment.user.id == current_user.id %>
+          <div class="my-comment">
+            <div class="comment-my-text">
+              <%= comment.text %>
+            </div>
+            <div class="comment-my-nickname">
+              <%= comment.user.nickname %>
+            </div>
+          </div>
+        <% else %>
+          <div class="guests-comment">
+            <div class="comment-guests-nickname">
+              <%= comment.user.nickname %>
+            </div>
+            <div class="comment-guests-text">
+              <%= comment.text %>
+            </div>
+          </div>
+        <% end %>
+        <br>
+      </div>
+    <% end %>
+    <%= form_with(model: [@score, @comment], local: true) do |f| %> 
+      <div class="comment-box">
+        <%= f.text_area :text, placeholder: "コメントする", class: "comment-text" %>
+        <%= f.submit "SEND", class: "comment-btn" %>
+      </div>
+      <p class="comment-warn">
+        ※相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        　不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+    <% end %>
+  </div>
 
   <div class='transition-btn'>
     <% if current_user.id == @score.user_id %>

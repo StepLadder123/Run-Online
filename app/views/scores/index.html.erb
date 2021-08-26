@@ -31,7 +31,7 @@
                 <div class="score-info-lower">
                   <div class="score-nickname">
                     <span class="unit">runner</span><br>
-                    <%= score.user_id %>
+                    <%= score.user.nickname %>
                   </div>
                   <div class='star-btn'>
                     <span class="unit">like</span><br>
@@ -39,7 +39,7 @@
                   </div>
                   <div class='comment-info'>
                     <span class="unit">comment</span><br>
-                    <span class='comment-count'>0</span>
+                    <%= Comment.where(score_id: score.id).count %>
                   </div>
                 </div>
               </div>
