@@ -2,53 +2,81 @@
 
 <%# スコア一覧 %>
 <div class='score-contents'>
-  <ul class='score-lists'>
-    <% if @scores.exists? %>
-      <% @scores.each do |score| %>
-        <li class='list'>
-          <div class="score-content">
-            <%= link_to score_path(score.id) do %>
-              <div class='score-img-content'>
-                <%= image_tag score.image, class: "score-img" %>
-              </div>
-            <% end %>
-            <div class='score-info'>
-              <div class="score-info-upper">
-                <h3 class='score-distance'>
-                  <span class="unit">km</span><br>
-                  <%= sprintf("%1.2f", score.distance) %>
-                </h3>
-                <h3 class='score-time'>
-                  <span class="unit">time</span><br>
-                  <%= "#{score.hour}:#{sprintf("%02d", score.minute)}:#{sprintf("%02d", score.second)}" %>
-                </h3>
-                <h3 class='score-time-per-km'>
-                  <span class="unit">pace</span><br>
-                  <%= "#{((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor}:#{sprintf("%02d", ((((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60) - ((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor) * 60).round)}" %>
-                </h3>
-              </div>
-              <div class="score-info-lower">
-                <div class="score-nickname">
-                  <span class="unit">runner</span><br>
-                  <%= score.user_id %>
+  <% if user_signed_in? %>
+    <ul class='score-lists'>
+      <% if @scores.exists? %>
+        <% @scores.each do |score| %>
+          <li class='list'>
+            <div class="score-content">
+              <%= link_to score_path(score.id) do %>
+                <div class='score-img-content'>
+                  <%= image_tag score.image, class: "score-img" %>
                 </div>
-                <div class='star-btn'>
-                  <span class="unit">like</span><br>
-                  <span class='star-count'>0</span>
+              <% end %>
+              <div class='score-info'>
+                <div class="score-info-upper">
+                  <h3 class='score-distance'>
+                    <span class="unit">km</span><br>
+                    <%= sprintf("%1.2f", score.distance) %>
+                  </h3>
+                  <h3 class='score-time'>
+                    <span class="unit">time</span><br>
+                    <%= "#{score.hour}:#{sprintf("%02d", score.minute)}:#{sprintf("%02d", score.second)}" %>
+                  </h3>
+                  <h3 class='score-time-per-km'>
+                    <span class="unit">pace</span><br>
+                    <%= "#{((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor}:#{sprintf("%02d", ((((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60) - ((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor) * 60).round)}" %>
+                  </h3>
                 </div>
-                <div class='comment-info'>
-                  <span class="unit">comment</span><br>
-                  <span class='comment-count'>0</span>
+                <div class="score-info-lower">
+                  <div class="score-nickname">
+                    <span class="unit">runner</span><br>
+                    <%= score.user_id %>
+                  </div>
+                  <div class='star-btn'>
+                    <span class="unit">like</span><br>
+                    <span class='star-count'>0</span>
+                  </div>
+                  <div class='comment-info'>
+                    <span class="unit">comment</span><br>
+                    <span class='comment-count'>0</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </li>
+        <% end %>
+      <% else %>
+        <div class="no-score">
+          <div class="no-score-content">
+            <span class="no-score-text">さぁ走りだそう</span>
           </div>
-        </li>
+          <div class="no-score-btn">
+            <div>
+              <%= link_to "アクティビティ登録", new_score_path, class:"no-score-btn-new-score" %><br><br>
+              <span class="no-score-btn-info">ランニングしたら登録はこちら</span>
+            </div>
+          </div>
+        </div>
       <% end %>
-    <% else %>
-      さぁ走りだそう
-    <% end %>
-  </ul>
+    </ul>
+  <% else %>
+    <div class="no-score">
+      <div class="no-score-content">
+        <span class="no-score-text">さぁ走りだそう</span>
+      </div>
+      <div class="no-score-btn">
+        <div>
+          <%= link_to "ログイン", new_user_session_path, class:"no-score-btn-sign-in" %><br><br>
+          <span class="no-score-btn-info">会員登録がお済みの方はこちら</span>
+        </div>
+        <div>
+          <%= link_to "新規登録", new_user_registration_path, class:"no-score-btn-sign-in" %><br><br>
+          <span class="no-score-btn-info">会員登録がまだの方はこちら</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 <%# /スコア一覧 %>
 
