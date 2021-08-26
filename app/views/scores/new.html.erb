@@ -31,7 +31,7 @@
         <span class="indispensable">必須</span>
       </div>
       <div class='input-birth-wrap'>
-        <%= f.date_field :date, class:"input-default", id:"date", max: Time.now, value: Time.now.strftime("%Y-%m-%d"), autofocus: true %>
+        <%= f.date_field :date, class:"input-default", id:"date", max: Time.now, value: Time.now.strftime("%Y-%m-%d") %>
       </div>
     </div>
     <%# /日付 %>
@@ -90,8 +90,12 @@
       </h2>
     </div>
     <div class='transition-btn'>
-      <%= f.submit "登録" ,class:"next-btn" %><br>
-      <%= link_to 'もどる', root_path, class:"back-btn" %>
+      <div class="btn-content">
+        <%= f.submit "登録する" ,class:"next-btn" %><br>
+      </div>
+      <div class="btn-content">
+        <%= link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
     </div>    
   <% end %>
 </div>
