@@ -38,7 +38,7 @@
   <div class='transition-btn'>
     <% if current_user.id == @score.user_id %>
       <%= link_to "コース登録をする", class:"next-btn" %><br>
-      <%= link_to '削除する', root_path, class:"delete-btn" %><br>
+      <%= link_to '削除する', score_path(@score.id), method: :delete, class:"delete-btn" %><br>
     <% end %>
     <%= link_to 'もどる', root_path, class:"back-btn" %>
   </div>
