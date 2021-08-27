@@ -13,6 +13,7 @@ class ScoresController < ApplicationController
   
   def create
     @score = Score.new(score_params)
+    score_calc
     if @score.save
       redirect_to root_path
     else
@@ -50,11 +51,15 @@ class ScoresController < ApplicationController
     params.require(:score).permit(:image, :distance, :hour, :minute, :second, :area_id, :date, :private, :challenge_id).merge(user_id: current_user.id)
   end
 
+  def score_calc
+    @score[:time] = (@score.hour * 60 + @score.minute) * 60 +@score.second
+    @score[:lap] = @score.time / @score.distance
+  end
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
-   end
+  end
    
-   def sort_column
+  def sort_column
     Score.column_names.include?(params[:sort]) ? params[:sort] : 'distance'
-   end
+  end
 end
