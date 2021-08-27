@@ -11,7 +11,7 @@
           <ul class='menu-login-list'>
             <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li>
             <li><%= link_to 'アクティビティ登録', new_score_path, class: "score-new" %> </li>
-            <li><%= link_to 'アクティビティ一覧', "#", class: "score-all" %> </li>
+            <li><%= link_to 'アクティビティ一覧', list_scores_path, class: "score-all" %> </li>
             <li><%= link_to 'ランキング', "#", class: "score-ranking" %> </li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
           </ul>
