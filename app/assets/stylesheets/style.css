@@ -429,6 +429,75 @@
 
 /* /scores/show */
 
+/* scores/list */
+.list {
+  margin: 3vh 5vw;
+}
+
+.list-table {
+  margin: 0 auto;
+}
+
+.list-item-row {
+  height: 50px;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+}
+
+.list-value-row {
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+}
+
+.list-item,
+.list-value {
+  padding: 0 3vw;
+  text-align: center;
+}
+
+#list-distance,
+#list-time,
+#list-lap {
+  text-align: right;
+}
+
+.sort_header {
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.sort_header::before, .sort_header::after {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  border: 5px solid transparent;
+  right: -12px;
+  top: 50%;
+}
+
+.sort_header::before {
+    border-bottom-color: #ddd;
+    margin-top: -10px;
+}
+
+.sort_header::after {
+    border-top-color: #ddd;
+    margin-top: 2px;
+}
+
+.sort_header.asc::before {
+  border-bottom-color: blue;
+}
+.sort_header.desc::after {
+  border-top-color: blue;
+}
+
+/* /scores/list */
+
 /* フッター */
 .top-page-footer {
   height: 50px;

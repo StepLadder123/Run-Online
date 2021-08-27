@@ -21,11 +21,11 @@
                   </h3>
                   <h3 class='score-time'>
                     <span class="unit">time</span><br>
-                    <%= "#{score.hour}:#{sprintf("%02d", score.minute)}:#{sprintf("%02d", score.second)}" %>
+                    <%= Time.at(score.time).utc.strftime('%-H:%M:%S') %>
                   </h3>
                   <h3 class='score-time-per-km'>
                     <span class="unit">pace</span><br>
-                    <%= "#{((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor}:#{sprintf("%02d", ((((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60) - ((((score.hour * 60 + score.minute) * 60 + score.second) / score.distance) / 60).floor) * 60).round)}" %>
+                    <%= Time.at(score.lap).utc.strftime('%-M:%S') %>
                   </h3>
                 </div>
                 <div class="score-info-lower">

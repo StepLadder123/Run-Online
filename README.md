@@ -74,6 +74,8 @@ Run-on
 | second       | integer    | null: false                |
 | area_id      | integer    | null: false                |
 | date         | date       | null: false                |
+| time         | integer    | null: false                |
+| lap          | integer    | null: false                |
 | private      | boolean    |                            |
 | challenge_id | integer    |                            |
 | user_id      | references | null: false, foreign: true |

@@ -20,15 +20,15 @@
       </tr>
       <tr>
         <th class="detail-item">距離</th>
-        <td class="detail-value"><%= "#{@score.distance} km" %></td>
+        <td class="detail-value"><%= "#{sprintf("%1.2f", @score.distance)} km" %></td>
       </tr>
       <tr>
         <th class="detail-item">タイム</th>
-        <td class="detail-value"><%= "#{@score.hour}:#{sprintf("%02d", @score.minute)}:#{sprintf("%02d", @score.second)}" %></td>
+        <td class="detail-value"><%= Time.at(@score.time).utc.strftime('%-H:%M:%S') %></td>
       </tr>
       <tr>
         <th class="detail-item">ラップ</th>
-        <td class="detail-value"><%= "#{((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60).floor}:#{sprintf("%02d", ((((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60) - ((((@score.hour * 60 + @score.minute) * 60 + @score.second) / @score.distance) / 60).floor) * 60).round)} min/km" %></td>
+        <td class="detail-value"><%= "#{Time.at(@score.lap).utc.strftime('%-M:%S')} min/km" %></td>
       </tr>
     </tbody>
   </table> 
