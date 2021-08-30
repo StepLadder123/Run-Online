@@ -1,0 +1,95 @@
+<%= render "shared/main_header" %>
+
+<div class="search">
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      アクティビティ検索
+    </h1>
+  </div>
+  <div class="list-search">
+    <%= search_form_for @s, url: list_scores_path do |f| %>
+      <div id="search-sex" class="search-row">
+        <div class="search-item">
+          <%= f.label :user_sex_id_eq, '性別' %>
+        </div>
+        <div class="search-input">
+          <%= f.collection_select :user_sex_id_eq, Sex.where.not(id: 1), :id, :name, include_blank: '指定なし', class:"select-box", id:"input-sex" %>
+        </div>
+      </div>
+      <div id="search-age" class="search-row">
+        <div class="search-item">
+          <%= f.label :user_birthday_lteq, '年齢' %>
+        </div>
+        <div class="search-input">
+          <%= f.select :user_birthday_lteq, [['10', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 100000}")], ['20', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 200000}")], ['30', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 300000}")], ['40', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 400000}")], ['50', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 500000}")], ['60', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 600000}")], ['70', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 700000}")]], {include_blank: '指定なし'}, class:"select-box", id:"input-time-min" %>
+          <span class="unit">歳</span>
+          <%= f.label :user_birthday_gteq, " 〜 " %>
+          <%= f.select :user_birthday_gteq, [['9', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 100000}")], ['19', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 200000}")], ['29', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 300000}")], ['39', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 400000}")], ['49', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 500000}")], ['59', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 600000}")], ['69', Date.parse("#{Date.today.strftime("%Y%m%d").to_i - 700000}")]], {include_blank: '指定なし'}, class:"select-box", id:"input-time-max" %>
+          <span class="unit">歳</span>
+        </div>
+      </div>
+      <div id="search-date" class="search-row">
+        <div class="search-item">
+          <%= f.label :date_gteq, '日付' %>
+        </div>
+        <div class="search-input">
+          <%= f.date_field :date_gteq, class: "input-field", id: "date-min" %>
+          <%= f.label :distance_lteq, " 〜 " %>
+          <%= f.date_field :date_lteq, class: "input-field", id: "date-max" %>
+        </div>
+      </div>
+      <div id="search-area" class="search-row">
+        <div class="search-item">
+          <%= f.label :area_id_eq, 'エリア' %>
+        </div>
+        <div class="search-input">
+          <%= f.collection_select :area_id_eq, Area.where.not(id: 1), :id, :name, include_blank: '指定なし', class:"select-box", id:"input-area" %>
+        </div>
+      </div>
+      <div id="search-distance" class="search-row">
+        <div class="search-item">
+          <%= f.label :distance_gteq, '距離' %>
+        </div>
+        <div class="search-input">
+          <%= f.number_field :distance_gteq, class: "input-field", id: "distance-min" %>
+          <span class="unit">km</span>
+          <%= f.label :distance_lteq, " 〜 " %>
+          <%= f.number_field :distance_lteq, class: "input-field", id: "distance-max" %>
+          <span class="unit">km</span>
+        </div>
+      </div>
+      <div id="search-time" class="search-row">
+        <div class="search-item">
+          <%= f.label :time_gteq, 'タイム' %>
+        </div>
+        <div class="search-input">
+          <%= f.select :time_gteq, [['0:30:00', 1800], ['1:00:00', 3600], ['1:30:00', 5400], ['2:00:00', 7200], ['2:30:00', 9000], ['3:00:00', 10800]], {include_blank: '指定なし'}, class:"select-box", id:"input-time-min" %>
+          <%= f.label :time_lteq, ' 〜 ' %>
+          <%= f.select :time_lteq, [['0:29:59', 1799], ['0:59:59', 3599], ['1:29:59', 5399], ['1:59:59', 7199], ['2:29:59', 8999], ['2:59:59', 10799], ], {include_blank: '指定なし'}, class:"select-box", id:"input-time-max" %>
+        </div>
+      </div>
+      <div id="search-lap" class="search-row">
+        <div class="search-item">
+          <%= f.label :lap_gteq, 'ラップ' %>
+        </div>
+        <div class="search-input">
+          <%= f.select :lap_gteq, [['3:00', 180], ['3:30', 210], ['4:00', 240], ['4:30', 270], ['5:00', 300], ['5:30', 330], ['6:00', 360], ['6:30', 390], ['7:00', 420], ['7:30', 450], ['8:00', 480], ['8:30', 510], ['9:00', 540], ['9:30', 570], ['10:00', 600]], {include_blank: '指定なし'}, class:"select-box", id:"input-lap-min" %>
+          <span class="unit">min/km</span>
+          <%= f.label :lap_lteq, ' 〜 ' %>
+          <%= f.select :lap_lteq, [['2:59', 179], ['3:29', 209], ['3:59', 239], ['4:29', 269], ['4:59', 300], ['5:29', 329], ['5:59', 359], ['6:29', 389], ['6:59', 419], ['7:29', 449], ['7:59', 479], ['8:29', 509], ['8:59', 539], ['9:29', 569], ['9:59', 599]], {include_blank: '指定なし'}, class:"select-box", id:"input-lap-max" %>
+          <span class="unit">min/km</span>
+        </div>
+      </div>
+      <div class='transition-btn'>
+        <div class="btn-content">
+          <%= f.submit "検索する" ,class:"next-btn" %><br>
+        </div>
+        <div class="btn-content">
+          <%= link_to 'もどる', root_path, class:"back-btn" %>
+        </div>
+      </div>    
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/main_footer" %>
