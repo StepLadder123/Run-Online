@@ -21,22 +21,23 @@
         </tr>
       </thead>
       <tbody>
-        <% @scores.each do |score| %>
+        <% @results.each do |result| %>
           <tr class="list-value-row">
-            <td id="list-nickname" class="list-value"><%= score.user.nickname %></td>
-            <td id="list-sex" class="list-value"><%= score.user.sex_id %></td>
-            <td id="list-age" class="list-value"><%= (Date.today.strftime("%Y%m%d").to_i - score.user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
-            <td id="list-date" class="list-value"><%= score.date %></td>
-            <td id="list-area" class="list-value"><%= score.area.name %></td>
-            <td id="list-distance" class="list-value"><%= sprintf("%1.2f", score.distance) %></td>
-            <td id="list-time" class="list-value"><%= Time.at(score.time).utc.strftime('%-H:%M:%S') %></td>
-            <td id="list-lap" class="list-value"><%= Time.at(score.lap).utc.strftime('%-M:%S') %></td>
+            <td id="list-nickname" class="list-value"><%= result.user.nickname %></td>
+            <td id="list-sex" class="list-value"><%= result.user.sex_id %></td>
+            <td id="list-age" class="list-value"><%= (Date.today.strftime("%Y%m%d").to_i - result.user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
+            <td id="list-date" class="list-value"><%= result.date %></td>
+            <td id="list-area" class="list-value"><%= result.area.name %></td>
+            <td id="list-distance" class="list-value"><%= sprintf("%1.2f", result.distance) %></td>
+            <td id="list-time" class="list-value"><%= Time.at(result.time).utc.strftime('%-H:%M:%S') %></td>
+            <td id="list-lap" class="list-value"><%= Time.at(result.lap).utc.strftime('%-M:%S') %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-  <div class="list-search">
+  <div class="back-search-btn">
+    <%= link_to '検索画面にもどる', search_scores_path, class: "back-search-btn-text" %>
   </div>
 </div>
 <%= render "shared/main_footer" %>

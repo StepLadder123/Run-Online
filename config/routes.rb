@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :scores, only: [:index, :new, :create, :show, :destroy] do
     collection do
+      get 'search'
       get 'list'
     end
     resources :comments, only: :create
