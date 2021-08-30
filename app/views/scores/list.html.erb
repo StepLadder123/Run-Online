@@ -15,9 +15,9 @@
           <th class="list-item"><%= "年齢" %></th>
           <th class="list-item"><%= "日付" %></th>
           <th class="list-item"><%= "場所" %></th>
-          <th class="list-item"><%= sort_order "distance", "距離" %></th>
-          <th class="list-item"><%= sort_order "time", "タイム" %></th>
-          <th class="list-item"><%= sort_order "lap", "ラップ" %></th>
+          <th class="list-item"><%= sort_link(@s, :distance, '距離', default_order: :desc) %></th>
+          <th class="list-item"><%= sort_link(@s, :time, 'タイム', default_order: :desc) %></th>
+          <th class="list-item"><%= sort_link(@s, :lap, 'ラップ', default_order: :desc) %></th>
         </tr>
       </thead>
       <tbody>

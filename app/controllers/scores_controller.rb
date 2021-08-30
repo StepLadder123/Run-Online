@@ -2,7 +2,6 @@ class ScoresController < ApplicationController
   before_action :move_to_signed_in, except: [:index]
   before_action :set_score, only: [:show, :destroy]
   before_action :search_score, only: [:search, :list]
-  helper_method :sort_column, :sort_direction
 
   def index
     @scores = Score.includes(:user).order("created_at DESC")
@@ -33,7 +32,7 @@ class ScoresController < ApplicationController
   end
   
   def search
-    @scores = Score.order("#{sort_column} #{sort_direction}")
+    @scores = Score.all
   end
 
   def list
@@ -63,13 +62,5 @@ class ScoresController < ApplicationController
 
   def search_score
     @s = Score.ransack(params[:q])
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
-  end
-   
-  def sort_column
-    Score.column_names.include?(params[:sort]) ? params[:sort] : 'distance'
   end
 end
