@@ -1,6 +1,7 @@
 class ScoresController < ApplicationController
   before_action :move_to_signed_in, except: [:index]
   before_action :set_score, only: [:show, :destroy]
+  before_action :search_score, only: [:search, :list]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -31,8 +32,12 @@ class ScoresController < ApplicationController
     redirect_to root_path
   end
   
-  def list
+  def search
     @scores = Score.order("#{sort_column} #{sort_direction}")
+  end
+
+  def list
+    @results = @s.result
   end
 
   private
@@ -55,6 +60,11 @@ class ScoresController < ApplicationController
     @score[:time] = (@score.hour * 60 + @score.minute) * 60 +@score.second
     @score[:lap] = @score.time / @score.distance
   end
+
+  def search_score
+    @s = Score.ransack(params[:q])
+  end
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
