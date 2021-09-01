@@ -15,6 +15,10 @@
   margin-left: 40px;
 }
 
+.site-logo:hover {
+  opacity: 0.75;
+}
+
 .header-right-contents {
   float: right;
   text-decoration: none;
@@ -24,13 +28,6 @@
 
 .menu-btn {
   float: right;
-}
-
-.menu-checkbox {
-  display: none;
-}
-
-.menu-btn {
   display: flex;
   height: 60px;
   width: 60px;
@@ -38,6 +35,10 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+}
+
+.menu-checkbox {
+  display: none;
 }
 
 .menu-btn span,
@@ -103,6 +104,14 @@
   font-weight: bold;
 }
 
+.user-nickname:hover, 
+.score-new:hover, 
+.score-all:hover, 
+.score-ranking:hover, 
+.logout {
+  opacity: 0.75;
+}
+
 .menu-logout-list {
   display: flex;
   line-height: 70px;
@@ -112,6 +121,10 @@
   text-decoration: none;
   color: white;
   margin-right: 30px;
+}
+
+.login:hover, .sign-up:hover {
+  opacity: 0.75;
 }
 /* /ヘッダー */
 
@@ -148,6 +161,18 @@
   text-decoration: none;
   color: #333
 }
+
+.next-btn:hover, 
+.back-btn:hover, 
+.delete-btn:hover, 
+.back-search-btn:hover, 
+.no-score-btn-sign-in:hover,
+.no-score-btn-sign-up:hover,
+.no-score-btn-new-score:hover, 
+.rank-tab-btn:hover {
+  opacity: 0.75;
+}
+
 
 /* /下部ボタン */
 
@@ -241,6 +266,10 @@
 .score-img {
   height: 200px;
   width: 200px;
+}
+
+.score-img:hover {
+  opacity: 0.75;
 }
 
 .score-info-upper, .score-info-lower {
@@ -457,41 +486,59 @@
 }
 /* /scores/search */
 
-/* scores/list */
-.list {
-  margin: 5vh 5vw;
+/* scores/list, rank */
+.list, 
+.rank {
+  margin: 5vh auto;
+  width: 80vw;
 }
 
-.list-table {
+.list-table, 
+.rank-table {
   margin: 0 auto;
 }
 
-.list-item-row {
+.list-item-row, 
+.rank-item-row {
   height: 50px;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
 }
 
-.list-value-row {
+.list-value-row, 
+.rank-value-row {
   height: 40px;
   border-bottom: 1px solid #ccc;
 }
 
 .sort_link {
   text-decoration: none;
-  color: skyblue;
+  color: blue;
   font-weight: bold;
+}
+
+.sort_link:hover {
+  opacity: 0.75;
 }
 
 .list-item,
 .list-value {
-  padding: 0 3vw;
+  width: calc(100% / 8);
+  text-align: center;
+}
+
+.rank-item, 
+.rank-value {
+  width: calc(100% / 5);
   text-align: center;
 }
 
 #list-distance,
 #list-time,
-#list-lap {
+#list-lap, 
+#rank-distance, 
+#rank-time, 
+#rank-count {
   text-align: right;
 }
 
@@ -513,7 +560,62 @@
   color: white;
 }
 
-/* /scores/list */
+.rank-content {
+  margin-top: 50px; 
+  padding-bottom: 40px;
+  background-color: #fff;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  margin: 2vh auto;
+  width: 80vw;
+}
+
+.rank-tab-btn {
+  width: calc(100%/3);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+input[name="rank-term"] {
+  display: none;
+}
+
+.rank-select {
+  width: 100%;
+}
+
+.rank-display {
+  width: 100%;
+  display: none;
+  padding: 1vh 0;
+  clear: both;
+  overflow: hidden;
+}
+
+#rank-year:checked ~ #table-year, 
+#rank-month:checked ~ #table-month, 
+#rank-week:checked ~ #table-week {
+  display: block;
+}
+
+.rank-table {
+  width: 100%;
+}
+
+.rank-content input:checked + .rank-tab-btn {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+/* /scores/list, rank */
 
 /* フッター */
 .top-page-footer {
