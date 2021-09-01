@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_074008) do
+ActiveRecord::Schema.define(version: 2021_09_01_093721) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2021_08_27_074008) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["score_id"], name: "index_comments_on_score_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "score_id", null: false
+    t.text "feature"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["score_id"], name: "index_courses_on_score_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,5 +93,7 @@ ActiveRecord::Schema.define(version: 2021_08_27_074008) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "scores"
   add_foreign_key "comments", "users"
+  add_foreign_key "courses", "scores"
+  add_foreign_key "courses", "users"
   add_foreign_key "scores", "users"
 end
