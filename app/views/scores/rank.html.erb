@@ -1,0 +1,92 @@
+<%= render "shared/main_header" %>
+
+<div class="rank">
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      ユーザーランキング
+    </h1>
+  </div>
+
+  <div class="rank-content">
+    <input type="radio" id="rank-year" name="rank-term" class="rank-select" checked>
+    <label class="rank-tab-btn" for="rank-year">今年</label>
+    <input type="radio" id="rank-month" name="rank-term" class="rank-select">
+    <label class="rank-tab-btn" for="rank-month">今月</label>
+    <input type="radio" id="rank-week" name="rank-term" class="rank-select">
+    <label class="rank-tab-btn" for="rank-week">今週</label>
+    <div id="table-year" class="rank-display">
+      <table class="rank-table">
+        <thead>
+          <tr class="rank-item-row">
+            <th class="rank-item"><%= "順位" %></th>
+            <th class="rank-item"><%= "ランナー" %></th>
+            <th class="rank-item"><%= "総距離" %></th>
+            <th class="rank-item"><%= "総時間" %></th>
+            <th class="rank-item"><%= "回数" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sort_distance_year.each.with_index(1) do |user, i| %>
+            <tr class="rank-value-row">
+              <td id="rank-place" class="rank-value"><%= i %></td>
+              <td id="rank-nickname" class="rank-value"><%= user.nickname %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_year).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_year).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_year).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div id="table-month" class="rank-display">
+      <table class="rank-table">
+        <thead>
+          <tr class="rank-item-row">
+            <th class="rank-item"><%= "順位" %></th>
+            <th class="rank-item"><%= "ランナー" %></th>
+            <th class="rank-item"><%= "総距離" %></th>
+            <th class="rank-item"><%= "総時間" %></th>
+            <th class="rank-item"><%= "回数" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sort_distance_month.each.with_index(1) do |user, i| %>
+            <tr class="rank-value-row">
+              <td id="rank-place" class="rank-value"><%= i %></td>
+              <td id="rank-nickname" class="rank-value"><%= user.nickname %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_month).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_month).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_month).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div id="table-week" class="rank-display">
+      <table class="rank-table">
+        <thead>
+          <tr class="rank-item-row">
+            <th class="rank-item"><%= "順位" %></th>
+            <th class="rank-item"><%= "ランナー" %></th>
+            <th class="rank-item"><%= "総距離" %></th>
+            <th class="rank-item"><%= "総時間" %></th>
+            <th class="rank-item"><%= "回数" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sort_distance_week.each.with_index(1) do |user, i| %>
+            <tr class="rank-value-row">
+              <td id="rank-place" class="rank-value"><%= i %></td>
+              <td id="rank-nickname" class="rank-value"><%= user.nickname %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_week).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_week).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_week).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/main_footer" %>
