@@ -15,6 +15,13 @@ class CoursesController < ApplicationController
     end
   end
 
+  def destroy
+    course = Course.find_by(id: params[:id], score_id: params[:score_id])
+    move_to_index
+    course.destroy
+    redirect_to score_path(@score.id)
+  end
+  
   private
 
   def move_to_index
