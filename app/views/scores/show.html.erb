@@ -6,31 +6,41 @@
 
   <div class="course-challenge-btn">
     <% if @course.present? %>
+      <div class="course-title">
+        ＜登録コースに挑戦＞
+      </div>
       <div class="challenge-count">
         <%= "現在までに●人が挑戦し、●人が#{@score.user.nickname}の記録を上回っています。" %>
       </div>
-      <div class="course-feature">
-        <%= @course.feature %>
-      </div>
       <% if current_user.id == @score.user_id %>
         <div class="btn-content">
-          <%= link_to "コースを削除する", "#", class: "course-delete-btn" %>
+          <%= link_to "登録コースを削除する", score_course_path(@course.score_id, @course.id), method: :delete, class: "course-delete-btn" %>
         </div>
         <div class="caution">
           <p class="course-warn">※アクティビティを削除する場合には、コースを削除の上、アクティビティの削除が必要です。</p>
         </div>
       <% else %>
         <div class="btn-content">
-          <%= link_to "コースに挑戦する", "#", class: "challenge-btn" %>
+          <%= link_to "登録コースに挑戦する", "#", class: "challenge-btn" %>
         </div>
       <% end %>
-    <% elsif current_user.id == @score.user_id %>
-      <div class="btn-content">
-        <%= link_to "コースを登録する", new_score_course_path(@score.id), class:"next-btn" %>
-      </div>
-      <div class="caution">
-        <p class="course-warn">※コースを登録すると他のユーザーがあなたの記録に挑戦できます。</p>
-      </div>
+    <% else %>
+      <% if current_user.id == @score.user_id %>
+        <div class="course-title">
+          ＜コース登録＞
+        </div>
+        <div class="btn-content">
+          <%= link_to "コースを登録する", new_score_course_path(@score.id), class:"next-btn" %>
+        </div>
+        <div class="caution">
+          <p class="course-warn">※コースを登録すると他のユーザーがあなたの記録に挑戦できます。</p>
+        </div>
+      <% else %>
+        <div class="course-title">
+          ＜登録コースに挑戦＞
+        </div>
+          コース登録されていません
+      <% end %>
     <% end %>
   </div>
 

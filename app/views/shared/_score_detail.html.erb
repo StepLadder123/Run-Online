@@ -27,5 +27,11 @@
       <th class="detail-item">ラップ</th>
       <td class="detail-value"><%= "#{Time.at(@score.lap).utc.strftime('%-M:%S')} min/km" %></td>
     </tr>
+    <% if @course.present? %>
+      <tr>
+        <th class="detail-item">コースの特徴</th>
+        <td class="detail-value"><%= @course.feature %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
