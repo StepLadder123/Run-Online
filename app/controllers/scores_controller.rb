@@ -25,6 +25,7 @@ class ScoresController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @score.comments.includes(:user)
+    @course = @score.course
   end
   
   def destroy
