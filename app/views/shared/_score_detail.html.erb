@@ -1,0 +1,31 @@
+<div class="score-img-content">
+  <%= image_tag @score.image, class: "score-img" %>
+</div>
+<table class="detail-table">
+  <tbody>
+    <tr>
+      <th class="detail-item">ランナー</th>
+      <td class="detail-value"><%= @score.user.nickname %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">日付</th>
+      <td class="detail-value"><%= @score.date %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">場所</th>
+      <td class="detail-value"><%= @score.area.name %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">距離</th>
+      <td class="detail-value"><%= "#{sprintf("%1.2f", @score.distance)} km" %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">タイム</th>
+      <td class="detail-value"><%= Time.at(@score.time).utc.strftime('%-H:%M:%S') %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">ラップ</th>
+      <td class="detail-value"><%= "#{Time.at(@score.lap).utc.strftime('%-M:%S')} min/km" %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,31 @@
+<%= render "shared/main_header" %>
+
+<div class="form-wrap">
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      コース登録
+    </h1>
+  </div>
+
+  <%= render "shared/score_detail" %>
+
+  <%= form_with model: [@score, @course], id: "new_course", class: "new_course", local: true do |f| %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">特徴</label>
+      </div>
+      <%= f.text_area :nickname, class:"input-course-feature", id:"feature", placeholder:"例) アップダウンの少ない平坦なコースです。", autofocus: true %>
+      <p>※特徴の入力は任意です。</p>
+      <div class='transition-btn'>
+        <div class="btn-content">
+          <%= f.submit "登録する" ,class:"next-btn" %><br>
+        </div>
+        <div class="btn-content">
+          <%= link_to 'もどる', root_path, class:"back-btn" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/main_footer" %>
