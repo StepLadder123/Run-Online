@@ -1,7 +1,7 @@
 class Score < ApplicationRecord
   belongs_to :user
   # belongs_to :challenge
-  # has_one :course
+  has_one :course
   has_many :comments
   has_one_attached :image
 
