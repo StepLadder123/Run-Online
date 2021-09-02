@@ -129,13 +129,15 @@
 /* /ヘッダー */
 
 /* 下部ボタン */
-.transition-btn {
+.transition-btn, 
+.course-challenge-btn {
   width: 100%;
   text-align: center;
+  margin-top: 8vh;
 }
 
 .btn-content {
-  margin: 5vh 0;
+  margin: 2vh 0 5vh;
 }
 
 .next-btn {
@@ -154,7 +156,8 @@
   color: #333
 }
 
-.delete-btn {
+.score-delete-btn, 
+.course-delete-btn {
   background: rgb(212, 116, 116);
   border: 1px solid rgb(226, 63, 63);
   padding: 15px 20%;
@@ -162,10 +165,21 @@
   color: #333
 }
 
+.challenge-btn {
+  background: gold;
+  border: 1px solid goldenrod;
+  padding: 15px 20%;
+  text-decoration: none;
+  color: #333
+}
+
 .next-btn:hover, 
 .back-btn:hover, 
-.delete-btn:hover, 
-.back-search-btn:hover, 
+.score-delete-btn:hover, 
+.course-delete-btn:hover, 
+.challenge-btn:hover, 
+.back-search-btn:hover,
+.comment-btn:hover, 
 .no-score-btn-sign-in:hover,
 .no-score-btn-sign-up:hover,
 .no-score-btn-new-score:hover, 
@@ -201,7 +215,6 @@
 }
 
 .form-group {
-  width: 60%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -230,7 +243,8 @@
 }
 
 .input-info,
-.comment-warn {
+.comment-warn, 
+.course-warn {
   font-size: 14px;
   margin-left: 5px;
 }
@@ -253,7 +267,10 @@
 .input-birth-wrap, 
 .form-time {
   display: flex;
-  justify-content: space-between;
+}
+
+.input-course-feature {
+  width: 60vw;
 }
 /* /フォーム */
 
@@ -268,8 +285,12 @@
   width: 200px;
 }
 
-.score-img:hover {
+.score-content .score-img:hover {
   opacity: 0.75;
+}
+
+.score-img-content {
+  text-align: center;
 }
 
 .score-info-upper, .score-info-lower {
@@ -329,7 +350,6 @@
 
 /* scores/show */
 .score-show {
-  background-color: #f8f8f8;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -355,6 +375,10 @@
   padding: 20px;
   border: 1px solid #dedede;
   font-size: 14px;
+}
+
+.comments {
+  margin-top: 8vh;
 }
 
 .comment-box {
