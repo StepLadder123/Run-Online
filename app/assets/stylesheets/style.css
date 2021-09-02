@@ -385,6 +385,7 @@
   display: flex;
 }
 
+.course-title, 
 .comment-title {
   color: #0ac;
   font-size: 18px;
