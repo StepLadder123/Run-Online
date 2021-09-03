@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   
   def new
-    move_to_index
+    not_move_to_new
     @course = Course.new
   end
 
@@ -21,10 +21,15 @@ class CoursesController < ApplicationController
     course.destroy
     redirect_to score_path(@score.id)
   end
-  
+
+  def challenge
+    not_move_to_challenge
+    @score = Score.new
+  end
+
   private
 
-  def move_to_index
+  def not_move_to_new
     @score = Score.find(params[:score_id])
     unless current_user.id == @score.user_id
       redirect_to root_path
@@ -33,5 +38,13 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:feature).merge(user_id: current_user.id, score_id: params[:score_id])
+  end
+end
+
+def not_move_to_challenge
+  @score_cf = Score.find(params[:score_id])
+  @course_cf = Course.find_by(id: params[:id], score_id: params[:score_id])
+  if current_user.id == @score_cf.user_id
+    redirect_to root_path
   end
 end
