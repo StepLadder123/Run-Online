@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    move_to_index
+    not_move_to_new
     @course = Course.new(course_params)
     if @course.save
       redirect_to score_path(@score.id)

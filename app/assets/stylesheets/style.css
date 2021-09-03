@@ -173,6 +173,14 @@
   color: #333
 }
 
+.user-edit-btn {
+  background: green;
+  border: 1px solid darkgreen;
+  padding: 15px 20%;
+  text-decoration: none;
+  color: #333
+}
+
 .next-btn:hover, 
 .back-btn:hover, 
 .score-delete-btn:hover, 
@@ -191,7 +199,8 @@
 /* /下部ボタン */
 
 /* フォーム */
-.form-wrap {
+.form-wrap, 
+.user-page {
   padding: 5vh 5vw;
   width: 60%;
   background-color: white;
@@ -420,6 +429,7 @@
   display: flex;
 }
 
+.sub-title, 
 .course-title, 
 .comment-title {
   color: #0ac;
