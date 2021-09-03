@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "scores#index"
   devise_for :users
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :update]
   resources :scores, only: [:index, :new, :create, :show, :destroy] do
     collection do
       get 'search'

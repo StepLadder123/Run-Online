@@ -1,5 +1,5 @@
 class ScoresController < ApplicationController
-  before_action :move_to_signed_in, except: [:index]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_score, only: [:show, :destroy]
   before_action :search_score, only: [:search, :list]
   before_action :score_all, only: [:search, :rank]
@@ -52,13 +52,7 @@ class ScoresController < ApplicationController
   end
   
   private
-  
-  def move_to_signed_in
-    unless user_signed_in?
-      redirect_to '/users/sign_in'
-    end
-  end
-  
+   
   def set_score
     @score = Score.find(params[:id])
   end
