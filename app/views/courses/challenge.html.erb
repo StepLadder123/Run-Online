@@ -1,0 +1,111 @@
+<%= render "shared/main_header" %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      アクティビティ登録
+    </h1>
+  </div>
+  <div class="challenge-mode">
+    <h2 class="challenge-mode-text">
+      <%= "このアクティビティは#{@score_cf.user.nickname}さんの登録コースのチャレンジモードです" %>
+    </h2>
+
+    <%= form_with model: @score, id: 'new_score', class: 'new_score', local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 地図画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        ルート画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /地図画像 %>
+    <%# 日付 %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">日付</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class='input-birth-wrap'>
+        <%= f.date_field :date, class:"input-default", id:"date", max: Time.now, value: Time.now.strftime("%Y-%m-%d") %>
+      </div>
+    </div>
+    <%# /日付 %>
+    <%# 距離 %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">距離</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.number_field :distance, class:"input-hidden", id:"distance", value: @score_cf.distance, readonly: true %>
+      <%= @score_cf.distance %>
+    </div>
+    <%# /距離 %>
+    <%# タイム %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">タイム</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="form-time">
+        <%= f.number_field :hour, class:"input-default", id:"time", min: 0, max: 23 %>
+        <span class="unit">時間</span>
+        <%= f.number_field :minute, class:"input-default", id:"time", min: 0, max: 59 %>
+        <span class="unit">分</span>
+        <%= f.number_field :second, class:"input-default", id:"time", min: 0, max: 59 %>
+        <span class="unit">秒</span>
+      </div>
+      <div class="user-time-display">
+        <%= "（参考）#{@score_cf.user.nickname}さんのタイム　" %><%= @score_cf.hour %><span class="unit">時間</span><%= @score_cf.minute %><span class="unit">分</span><%= @score_cf.second %><span class="unit">秒</span>
+      </div>
+    </div>
+    <%# /タイム %>
+    <%# エリア %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">エリア</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.number_field :area_id, class:"input-hidden", id:"challenge", value: @score_cf.user_id, readonly: true %>
+      <%# f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"area", selected: @score_cf.area_id, readonly: true}) %>
+      <%= @score_cf.area.name %>
+    </div>
+    <%# /エリア %>
+    <%# チャレンジアクティビティNo %>
+    <%= f.number_field :challenge_id, class:"input-hidden", id:"challenge", value: @score_cf.id, readonly: true %>
+    <%# /チャレンジアクティビティNo %>
+    <%# 非公開設定 %>
+    <div class="form-group">
+      <div class="form-check-box">
+        <%= f.number_field :private, class:"input-hidden", id:"challenge", value: 0, readonly: true %>
+        <p class="info-text">チャレンジモードはアクティビティを非公開にはできません</p>
+      </div>
+    </div>
+    <%# /非公開設定 %>
+    <div class="form-group">
+      <h2 class='form-bottom-text'>
+        入力内容に誤りがなければ[登録]をクリック。
+      </h2>
+    </div>
+    <div class='transition-btn'>
+      <div class="btn-content">
+        <%= f.submit "登録する" ,class:"next-btn" %><br>
+      </div>
+      <div class="btn-content">
+        <%= link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+    </div>    
+  <% end %>
+  </div>
+</div>
+
+<%= render "shared/main_footer" %>
