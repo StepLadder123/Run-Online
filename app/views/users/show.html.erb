@@ -1,0 +1,125 @@
+<%= render "shared/main_header" %>
+
+<div class="user-page">
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      <% if user_signed_in? && @user == current_user %>
+        <%= "#{@user.nickname}のページ" %>
+      <% else %>
+        <%= "#{@user.nickname}さんのページ" %>
+      <% end %>
+    </h1>
+  </div>
+  <div class="user-page-contents">
+    <div class="user-profile">
+      <div class="sub-title">
+        ＜ユーザー情報＞
+      </div>
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-item">ランナー</th>
+            <td class="detail-value"><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">年齢</th>
+            <td class="detail-value"><%= (Date.today.strftime("%Y%m%d").to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">性別</th>
+            <td class="detail-value"><%= @user.sex_id %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">主なランエリア</th>
+            <td class="detail-value"><%= @user.area_id %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">自己紹介</th>
+            <td class="detail-value"><%= @user.profile %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="user-score-term">
+      <div class="sub-title">
+        ＜期間別成績＞
+      </div>
+      <table class="rank-table">
+        <thead>
+          <tr class="rank-item-row">
+            <th class="rank-item"><%= "期間" %></th>
+            <th class="rank-item"><%= "総距離" %></th>
+            <th class="rank-item"><%= "総時間" %></th>
+            <th class="rank-item"><%= "回数" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rank-value-row">
+            <td id="rank-nickname" class="rank-value">全期間</td>
+            <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", @scores.sum(:distance)) %></td>
+            <td id="rank-time" class="rank-value"><%= Time.at(@scores.sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+            <td id="rank-count" class="rank-value"><%= @scores.count %></td>
+          </tr>
+          <tr class="rank-value-row">
+            <td id="rank-nickname" class="rank-value">今年</td>
+            <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", @scores.where(date: @term_year).sum(:distance)) %></td>
+            <td id="rank-time" class="rank-value"><%= Time.at(@scores.where(date: @term_year).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+            <td id="rank-count" class="rank-value"><%= @scores.where(date: @term_year).count %></td>
+          </tr>
+          <tr class="rank-value-row">
+            <td id="rank-nickname" class="rank-value">今月</td>
+            <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", @scores.where(date: @term_month).sum(:distance)) %></td>
+            <td id="rank-time" class="rank-value"><%= Time.at(@scores.where(date: @term_month).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+            <td id="rank-count" class="rank-value"><%= @scores.where(date: @term_month).count %></td>
+          </tr>
+          <tr class="rank-value-row">
+            <td id="rank-nickname" class="rank-value">今週</td>
+            <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", @scores.where(date: @term_week).sum(:distance)) %></td>
+            <td id="rank-time" class="rank-value"><%= Time.at(@scores.where(date: @term_week).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+            <td id="rank-count" class="rank-value"><%= @scores.where(date: @term_week).count %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="user-score-list">
+      <div class="sub-title">
+        ＜アクティビティ別成績＞
+      </div>
+      <table class="user-score-table">
+        <thead>
+          <tr class="list-item-row">
+            <th class="list-item"><%= "日付" %></th>
+            <th class="list-item"><%= "場所" %></th>
+            <th class="list-item"><%= "距離" %></th>
+            <th class="list-item"><%= "タイム" %></th>
+            <th class="list-item"><%= "ラップ" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scores.each do |score| %>
+            <tr class="list-value-row">
+              <td id="list-date" class="list-value"><%= score.date %></td>
+              <td id="list-area" class="list-value"><%= score.area.name %></td>
+              <td id="list-distance" class="list-value"><%= sprintf("%1.2f", score.distance) %></td>
+              <td id="list-time" class="list-value"><%= Time.at(score.time).utc.strftime('%-H:%M:%S') %></td>
+              <td id="list-lap" class="list-value"><%= Time.at(score.lap).utc.strftime('%-M:%S') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    <div class='transition-btn'>
+    <% if current_user.id == params[:id].to_i %>
+      <div class="btn-content">
+        <%= link_to '情報を編集する', "#", method: :delete, class:"user-edit-btn" %>
+      </div>
+    <% end %>
+    <div class="btn-content">
+      <%= link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+  </div>
+</div>
+
+
+<%= render "shared/main_footer" %>
