@@ -6,7 +6,12 @@
       アクティビティ登録
     </h1>
   </div>
-  <%= form_with model: @score, id: 'new_score', class: 'new_score', local: true do |f| %>
+  <div class="challenge-mode">
+    <h2 class="challenge-mode-text">
+      <%= "このアクティビティは#{@score_cf.user.nickname}さんの登録コースのチャレンジモードです" %>
+    </h2>
+
+    <%= form_with model: @score, id: 'new_score', class: 'new_score', local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -41,7 +46,8 @@
         <label class="form-text">距離</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.number_field :distance, class:"input-default", id:"distance", placeholder:"km(0.01)単位で入力", min: 0.01, step: "0.01" %>
+      <%= f.number_field :distance, class:"input-hidden", id:"distance", value: @score_cf.distance, readonly: true %>
+      <%= @score_cf.distance %>
     </div>
     <%# /距離 %>
     <%# タイム %>
@@ -58,6 +64,9 @@
         <%= f.number_field :second, class:"input-default", id:"time", min: 0, max: 59 %>
         <span class="unit">秒</span>
       </div>
+      <div class="user-time-display">
+        <%= "（参考）#{@score_cf.user.nickname}さんのタイム　" %><%= @score_cf.hour %><span class="unit">時間</span><%= @score_cf.minute %><span class="unit">分</span><%= @score_cf.second %><span class="unit">秒</span>
+      </div>
     </div>
     <%# /タイム %>
     <%# エリア %>
@@ -66,13 +75,19 @@
         <label class="form-text">エリア</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"area"}) %>
+      <%= f.number_field :area_id, class:"input-hidden", id:"challenge", value: @score_cf.user_id, readonly: true %>
+      <%# f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"area", selected: @score_cf.area_id, readonly: true}) %>
+      <%= @score_cf.area.name %>
     </div>
     <%# /エリア %>
+    <%# チャレンジアクティビティNo %>
+    <%= f.number_field :challenge_id, class:"input-hidden", id:"challenge", value: @score_cf.id, readonly: true %>
+    <%# /チャレンジアクティビティNo %>
     <%# 非公開設定 %>
     <div class="form-group">
       <div class="form-check-box">
-        <%= f.check_box :private, class:"input-default", id:"private" %><p class="input-info">アクティビティを公開しない場合はチェック</p>
+        <%= f.number_field :private, class:"input-hidden", id:"challenge", value: 0, readonly: true %>
+        <p class="info-text">チャレンジモードはアクティビティを非公開にはできません</p>
       </div>
     </div>
     <%# /非公開設定 %>
@@ -90,6 +105,7 @@
       </div>
     </div>    
   <% end %>
+  </div>
 </div>
 
 <%= render "shared/main_footer" %>

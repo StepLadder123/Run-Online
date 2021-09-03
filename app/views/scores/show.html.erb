@@ -10,7 +10,7 @@
         ＜登録コースに挑戦＞
       </div>
       <div class="challenge-count">
-        <%= "現在までに●人が挑戦し、●人が#{@score.user.nickname}の記録を上回っています。" %>
+        <%= "現在までに#{@challenge_member}人が挑戦し、#{@challenge_winner}人が#{@score.user.nickname}の記録を上回っています。" %>
       </div>
       <% if current_user.id == @score.user_id %>
         <div class="btn-content">
@@ -21,7 +21,7 @@
         </div>
       <% else %>
         <div class="btn-content">
-          <%= link_to "登録コースに挑戦する", "#", class: "challenge-btn" %>
+          <%= link_to "登録コースに挑戦する", score_course_challenge_path(@score.id, @course.id), class: "challenge-btn" %>
         </div>
       <% end %>
     <% else %>

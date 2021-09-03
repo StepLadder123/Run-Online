@@ -33,9 +33,9 @@
           <%= f.label :date_gteq, '日付' %>
         </div>
         <div class="search-input">
-          <%= f.date_field :date_gteq, class: "input-field", id: "date-min" %>
+          <%= f.date_field :date_gteq, class: "input-field", id: "date-min", max: Time.now %>
           <%= f.label :distance_lteq, " 〜 " %>
-          <%= f.date_field :date_lteq, class: "input-field", id: "date-max" %>
+          <%= f.date_field :date_lteq, class: "input-field", id: "date-max", max: Time.now %>
         </div>
       </div>
       <div id="search-area" class="search-row">
@@ -51,10 +51,10 @@
           <%= f.label :distance_gteq, '距離' %>
         </div>
         <div class="search-input">
-          <%= f.number_field :distance_gteq, class: "input-field", id: "distance-min" %>
+          <%= f.number_field :distance_gteq, class: "input-field", id: "distance-min", min: 0, step: "1" %>
           <span class="unit">km</span>
           <%= f.label :distance_lteq, " 〜 " %>
-          <%= f.number_field :distance_lteq, class: "input-field", id: "distance-max" %>
+          <%= f.number_field :distance_lteq, class: "input-field", id: "distance-max", min: 0, step: "1" %>
           <span class="unit">km</span>
         </div>
       </div>

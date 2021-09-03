@@ -23,9 +23,11 @@ class ScoresController < ApplicationController
   end
   
   def show
+    @scores = Score.all
     @comment = Comment.new
     @comments = @score.comments.includes(:user)
     @course = @score.course
+    challenge_count
   end
   
   def destroy
@@ -69,7 +71,20 @@ class ScoresController < ApplicationController
     @score[:time] = (@score.hour * 60 + @score.minute) * 60 +@score.second
     @score[:lap] = @score.time / @score.distance
   end
-  
+
+  def challenge_count
+    @challenge_member = 0
+    @challenge_winner = 0
+    @scores.each do |score|
+      if @score.id == score.challenge_id
+        @challenge_member += 1
+        if @score.time > score.time
+          @challenge_winner += 1
+        end
+      end
+    end
+  end
+
   def search_score
     @s = Score.ransack(params[:q])
   end

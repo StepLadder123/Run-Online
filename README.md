@@ -62,7 +62,6 @@ Run-on
 - has_many :scores
 - has_many :courses
 - has_many :comments
-- has_many :challenges, through: :user_challenges
 
 ## scoreテーブル
 
@@ -77,13 +76,11 @@ Run-on
 | time         | integer    | null: false                |
 | lap          | integer    | null: false                |
 | private      | boolean    |                            |
-| challenge_id | integer    |                            |
 | user_id      | references | null: false, foreign: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :challenge
 - has_one :course
 - has_many :comments
 
@@ -112,20 +109,5 @@ Run-on
 
 - belongs_to :user
 - belongs_to :score
-- has_many :challenges
-
-## challengeテーブル
-
-| Column    | Type       | Options                    |
-| --------- | ---------- | -------------------------- |
-| result    | boolean    |                            |
-| course_id | references | null: false, foreign: true |
-
-### Association
-
-- belongs_to :course
-- has_one :score
-- has_many :users, through: :user_challenges
-
 
 # ローカルでの動作方法
