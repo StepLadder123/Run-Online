@@ -1,6 +1,5 @@
 class Score < ApplicationRecord
   belongs_to :user
-  # belongs_to :challenge
   has_one :course
   has_many :comments
   has_one_attached :image
@@ -18,6 +17,7 @@ class Score < ApplicationRecord
   
   with_options presence: true, numericality: { greater_than: 0} do
     validates :distance
+    validates :time
   end
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
