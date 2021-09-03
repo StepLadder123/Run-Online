@@ -108,7 +108,7 @@
 .score-new:hover, 
 .score-all:hover, 
 .score-ranking:hover, 
-.logout {
+.logout:hover {
   opacity: 0.75;
 }
 
@@ -214,6 +214,29 @@
   font-weight: bold;
 }
 
+.challenge-mode-text {
+  animation: flash 1.5s linear infinite;
+  text-align: center;
+  font-size: 20px;
+  color: goldenrod;
+  font-weight: bold;
+  padding-bottom: 3vh;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -249,6 +272,10 @@
   margin-left: 5px;
 }
 
+.input-hidden {
+  display: none;
+}
+
 .img-upload {
   width: 60%;
   margin: 0 auto;
@@ -271,6 +298,14 @@
 
 .input-course-feature {
   width: 60vw;
+}
+
+.unit {
+  padding-right: 5px;
+}
+
+#time {
+  text-align: right;
 }
 /* /フォーム */
 
