@@ -1,11 +1,11 @@
 <div class="score-img-content">
-  <%= image_tag @score.image, class: "score-img" %>
+  <%= image_tag @score.image, class: "show-score-img" %>
 </div>
-<table class="detail-table">
+<table class="detail-table">  
   <tbody>
     <tr>
       <th class="detail-item">ランナー</th>
-      <td class="detail-value"><%= @score.user.nickname %></td>
+      <td class="detail-value"><%= link_to @score.user.nickname, user_path(@score.user_id), class: "table-nickname" %></td>
     </tr>
     <tr>
       <th class="detail-item">日付</th>

@@ -10,7 +10,7 @@
         <div class="menu-login-contents">
           <ul class='menu-login-list'>
             <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %> </li>
-            <li><%= link_to 'アクティビティ登録', new_score_path, class: "score-new" %> </li>
+            <li><%= link_to 'アクティビティ登録', new_score_path, class: "score-create" %> </li>
             <li><%= link_to 'アクティビティ検索', search_scores_path, class: "score-all" %> </li>
             <li><%= link_to 'ランキング', rank_scores_path, class: "score-ranking" %> </li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>

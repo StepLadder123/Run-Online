@@ -1,50 +1,51 @@
 <%= render "shared/main_header" %>
 
 <%# スコア一覧 %>
-<div class='score-contents'>
+<div class='score-index'>
   <% if user_signed_in? %>
     <ul class='score-lists'>
       <% if @scores.exists? %>
         <% @scores.each do |score| %>
-          <li class='list'>
-            <div class="score-content">
-              <%= link_to score_path(score.id) do %>
-                <div class='score-img-content'>
-                  <%= image_tag score.image, class: "score-img" %>
-                </div>
-              <% end %>
-              <div class='score-info'>
-                <div class="score-info-upper">
-                  <h3 class='score-distance'>
-                    <span class="unit">km</span><br>
-                    <%= sprintf("%1.2f", score.distance) %>
-                  </h3>
-                  <h3 class='score-time'>
-                    <span class="unit">time</span><br>
-                    <%= Time.at(score.time).utc.strftime('%-H:%M:%S') %>
-                  </h3>
-                  <h3 class='score-time-per-km'>
-                    <span class="unit">pace</span><br>
-                    <%= Time.at(score.lap).utc.strftime('%-M:%S') %>
-                  </h3>
-                </div>
-                <div class="score-info-lower">
-                  <div class="score-nickname">
-                    <span class="unit">runner</span><br>
-                    <%= score.user.nickname %>
+          <div class="score-contents">
+            <li class='list'>
+              <div class="score-content">
+                <%= link_to score_path(score.id) do %>
+                  <div class='score-img-content'>
+                    <%= image_tag score.image, class: "index-score-img" %>
                   </div>
-                  <div class='star-btn'>
-                    <span class="unit">like</span><br>
-                    <span class='star-count'>0</span>
+                <% end %>
+                <div class='score-info'>
+                  <div class="score-info-upper">
+                    <div class="update-time">
+                      <%= "●日前" %>
+                    </div>
+                    <div class="score-nickname">
+                      <span class="unit">runner</span><br>
+                      <%= link_to score.user.nickname, user_path(score.user_id), class: "index-nickname" %>
+                    </div>
+                    <div class='comment-info'>
+                      <span class="unit">comment</span><br>
+                      <%= Comment.where(score_id: score.id).count %>
+                    </div>
                   </div>
-                  <div class='comment-info'>
-                    <span class="unit">comment</span><br>
-                    <%= Comment.where(score_id: score.id).count %>
+                  <div class="score-info-lower">
+                    <h3 class='score-distance'>
+                      <span class="unit">km</span><br>
+                      <%= sprintf("%1.2f", score.distance) %>
+                    </h3>
+                    <h3 class='score-time'>
+                      <span class="unit">time</span><br>
+                      <%= Time.at(score.time).utc.strftime('%-H:%M:%S') %>
+                    </h3>
+                    <h3 class='score-time-per-km'>
+                      <span class="unit">pace</span><br>
+                      <%= Time.at(score.lap).utc.strftime('%-M:%S') %>
+                    </h3>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+          </div>
         <% end %>
       <% else %>
         <div class="no-score">
@@ -71,7 +72,7 @@
           <span class="no-score-btn-info">会員登録がお済みの方はこちら</span>
         </div>
         <div>
-          <%= link_to "新規登録", new_user_registration_path, class:"no-score-btn-sign-in" %><br><br>
+          <%= link_to "新規登録", new_user_registration_path, class:"no-score-btn-sign-up" %><br><br>
           <span class="no-score-btn-info">会員登録がまだの方はこちら</span>
         </div>
       </div>
