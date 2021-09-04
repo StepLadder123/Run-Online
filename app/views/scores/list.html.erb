@@ -1,8 +1,8 @@
 <%= render "shared/main_header" %>
 
 <div class="list">
-  <div class='form-header'>
-    <h1 class='form-header-text'>
+  <div class='title'>
+    <h1 class='title-text'>
       アクティビティ一覧
     </h1>
   </div>
@@ -11,8 +11,6 @@
       <thead>
         <tr class="list-item-row">
           <th class="list-item"><%= "ランナー" %></th>
-          <th class="list-item"><%= "性別" %></th>
-          <th class="list-item"><%= "年齢" %></th>
           <th class="list-item"><%= "日付" %></th>
           <th class="list-item"><%= "場所" %></th>
           <th class="list-item"><%= sort_link(@s, :distance, '距離', default_order: :desc) %></th>
@@ -23,10 +21,8 @@
       <tbody>
         <% @results.each do |result| %>
           <tr class="list-value-row">
-            <td id="list-nickname" class="list-value"><%= result.user.nickname %></td>
-            <td id="list-sex" class="list-value"><%= result.user.sex_id %></td>
-            <td id="list-age" class="list-value"><%= (Date.today.strftime("%Y%m%d").to_i - result.user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
-            <td id="list-date" class="list-value"><%= result.date %></td>
+            <td id="list-nickname" class="list-value"><%= link_to result.user.nickname, user_path(result.user_id), class: "list-nickname" %></td>
+            <td id="list-date" class="list-value"><%=link_to  result.date, score_path(result.id), class: "list-score-id" %></td>
             <td id="list-area" class="list-value"><%= result.area.name %></td>
             <td id="list-distance" class="list-value"><%= sprintf("%1.2f", result.distance) %></td>
             <td id="list-time" class="list-value"><%= Time.at(result.time).utc.strftime('%-H:%M:%S') %></td>

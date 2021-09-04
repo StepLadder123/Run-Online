@@ -1,8 +1,8 @@
 <%= render "shared/main_header" %>
 
 <div class="user-page">
-  <div class='form-header'>
-    <h1 class='form-header-text'>
+  <div class='title'>
+    <h1 class='title-text'>
       <% if user_signed_in? && @user == current_user %>
         <%= "#{@user.nickname}のページ" %>
       <% else %>
@@ -13,7 +13,9 @@
   <div class="user-page-contents">
     <div class="user-profile">
       <div class="sub-title">
-        ＜ユーザー情報＞
+        <h2 class="sub-title-text">
+          ユーザー情報
+        </h2>
       </div>
       <table class="detail-table">
         <tbody>
@@ -42,7 +44,9 @@
     </div>
     <div class="user-score-term">
       <div class="sub-title">
-        ＜期間別成績＞
+        <h2 class="sub-title-text">
+          期間別成績
+        </h2>
       </div>
       <table class="rank-table">
         <thead>
@@ -83,7 +87,9 @@
     </div>
     <div class="user-score-list">
       <div class="sub-title">
-        ＜アクティビティ別成績＞
+        <h2 class="sub-title-text">
+          アクティビティ別成績
+        </h2>
       </div>
       <table class="user-score-table">
         <thead>
@@ -98,7 +104,7 @@
         <tbody>
           <% @scores.each do |score| %>
             <tr class="list-value-row">
-              <td id="list-date" class="list-value"><%= score.date %></td>
+              <td id="list-date" class="list-value"><%=link_to  score.date, score_path(score.id), class: "show-score-id" %></td>
               <td id="list-area" class="list-value"><%= score.area.name %></td>
               <td id="list-distance" class="list-value"><%= sprintf("%1.2f", score.distance) %></td>
               <td id="list-time" class="list-value"><%= Time.at(score.time).utc.strftime('%-H:%M:%S') %></td>

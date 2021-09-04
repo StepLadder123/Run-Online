@@ -1,12 +1,12 @@
 <%= render "shared/main_header" %>
 
 <div class="user-page">
-  <div class='form-header'>
-    <h1 class='form-header-text'>
+  <div class='title'>
+    <h1 class='title-text'>
       ユーザー編集
     </h1>
   </div>
-  <div class="user-edit-contents">
+  <div class="form-contents">
     <%= form_with model: @user, id: 'new_user', class: 'new_user', local: true do |f| %>
 
       <%# devise_error_messages! %>
@@ -110,7 +110,12 @@
         </h2>
       </div>
       <div class='transition-btn'>
-        <%= f.submit "会員情報更新", class:"next-btn" %>
+        <div class="btn-content">
+          <%= f.submit "会員情報更新", class:"next-btn" %>
+        </div>
+        <div class="btn-content">
+          <%= link_to 'もどる', root_path, class:"back-btn" %>
+        </div>
       </div>    
     <% end %>
   </div>

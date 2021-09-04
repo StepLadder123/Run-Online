@@ -1,8 +1,8 @@
 <%= render "shared/main_header" %>
 
-<div class="form-wrap">
-  <div class='form-header'>
-    <h1 class='form-header-text'>
+<div class="course-new">
+  <div class='title'>
+    <h1 class='title-text'>
       コース登録
     </h1>
   </div>
@@ -14,8 +14,10 @@
       <div class='form-text-wrap'>
         <label class="form-text">特徴</label>
       </div>
-      <%= f.text_area :nickname, class:"input-course-feature", id:"feature", placeholder:"例) アップダウンの少ない平坦なコースです。", autofocus: true %>
-      <p>※特徴の入力は任意です。</p>
+      <div class="text-box">
+        <%= f.text_area :nickname, class:"input-course-feature", id:"feature", placeholder:"例) アップダウンの少ない平坦なコースです。", autofocus: true %>
+      </div>
+      <p class="course-warn">※特徴の入力は任意です。</p>
       <div class='transition-btn'>
         <div class="btn-content">
           <%= f.submit "登録する" ,class:"next-btn" %><br>

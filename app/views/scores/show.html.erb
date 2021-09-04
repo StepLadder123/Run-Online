@@ -1,13 +1,19 @@
 <%= render "shared/main_header" %>
 
 <div class="score-show">
-
+  <div class='title'>
+    <h1 class='title-text'>
+      アクティビティ
+    </h1>
+  </div>
   <%= render "shared/score_detail" %>
 
-  <div class="course-challenge-btn">
+  <div class="challenges">
     <% if @course.present? %>
-      <div class="course-title">
-        ＜登録コースに挑戦＞
+      <div class="sub-title">
+        <h2 class="sub-title-text">
+          登録コースに挑戦
+        </h2>
       </div>
       <div class="challenge-count">
         <%= "現在までに#{@challenge_member}人が挑戦し、#{@challenge_winner}人が#{@score.user.nickname}の記録を上回っています。" %>
@@ -26,8 +32,10 @@
       <% end %>
     <% else %>
       <% if current_user.id == @score.user_id %>
-        <div class="course-title">
-          ＜コース登録＞
+        <div class="sub-title">
+          <h2 class="sub-title-text">
+            コース登録
+          </h2>
         </div>
         <div class="btn-content">
           <%= link_to "コースを登録する", new_score_course_path(@score.id), class:"next-btn" %>
@@ -36,22 +44,29 @@
           <p class="course-warn">※コースを登録すると他のユーザーがあなたの記録に挑戦できます。</p>
         </div>
       <% else %>
-        <div class="course-title">
-          ＜登録コースに挑戦＞
+        <div class="sub-title">
+          <h2 class="sub-title-text">
+            登録コースに挑戦
+          </h2>
         </div>
-          コース登録されていません
+          <h3 class="answer">
+            コース登録されていません
+          </h3>
       <% end %>
     <% end %>
   </div>
 
   <div class="comments">
-    <h4 class="comment-title">
-      <% if @comments.exists? %>
-        ＜コメント一覧＞
-      <% else %>
-        まだコメントはありません
+    <div class="sub-title">
+      <h2 class="sub-title-text">
+        コメント一覧
+      </h2>
+    </div>
+      <% unless @comments.exists? %>
+        <h3 class="answer">
+          まだコメントはありません
+        </div>
       <% end %>
-    </h4>
     <% @comments.each do |comment| %>
       <div class="comment-lists">
         <% if comment.user.id == current_user.id %>
@@ -60,13 +75,13 @@
               <%= comment.text %>
             </div>
             <div class="comment-my-nickname">
-              <%= comment.user.nickname %>
+              <%= link_to comment.user.nickname, user_path(comment.user_id), class: "comment-nickname" %>
             </div>
           </div>
         <% else %>
           <div class="guests-comment">
             <div class="comment-guests-nickname">
-              <%= comment.user.nickname %>
+              <%= link_to comment.user.nickname, user_path(comment.user_id), class: "comment-nickname" %>
             </div>
             <div class="comment-guests-text">
               <%= comment.text %>
