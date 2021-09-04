@@ -4,6 +4,11 @@
   background: linear-gradient(blue, skyblue);
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 200;
 }
 
 .site-logo {
@@ -86,6 +91,7 @@
   z-index: 99;
   background: rgba(173, 223, 228, 0.7);
   transition: 0.5s;
+  padding-top: 50px;
 }
 
 #menu-check:checked ~ .menu-login-contents {
@@ -96,7 +102,7 @@
   padding-top: 15px;
 }
 
-.user-nickname, .score-new, .score-all, .score-ranking, .logout {
+.user-nickname, .score-create, .score-all, .score-ranking, .logout {
   color: #333;
   text-decoration: none;
   padding: 20px;
@@ -105,7 +111,7 @@
 }
 
 .user-nickname:hover, 
-.score-new:hover, 
+.score-create:hover, 
 .score-all:hover, 
 .score-ranking:hover, 
 .logout:hover {
@@ -128,56 +134,120 @@
 }
 /* /ヘッダー */
 
-/* 下部ボタン */
-.transition-btn, 
-.course-challenge-btn {
+/* 共通 */
+.score-contents, 
+.sign-up-form, 
+.log-in-form, 
+.score-new, 
+.score-show, 
+.search, 
+.list, 
+.rank, 
+.course-new, 
+.score-challenge, 
+.user-page {
+  padding: 70px 0;
+  width: 60%;
+  max-width: 600px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.score-show {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  width: 100%;
+  height: 80px;
+  text-align: center;
+}
+
+.title-text {
+  font-size: 24px;
+  color: #333;
+  line-height: 80px;
+  border-bottom: 2px double skyblue;
+  font-weight: bold;
+}
+
+.sub-title {
+  width: 50%;
+  height: 40px;
+  margin: 0 auto 30px;
+}
+
+.sub-title-text {
+  font-size: 20px;
+  color: #333;
+  line-height: 40px;
+  border-bottom: 1px double skyblue;
+  font-weight: bold;
+  text-align: center;
+}
+
+.challenges, 
+.comments {
   width: 100%;
   text-align: center;
-  margin-top: 8vh;
+}
+/* /共通 */
+
+/* 下部ボタン */
+.transition-btn {
+  width: 100%;
+  text-align: center;
 }
 
 .btn-content {
-  margin: 2vh 0 5vh;
+  margin: 30px auto;
+  max-width: 400px;
 }
 
 .next-btn {
   background: skyblue;
-  border: 1px solid #2daeea;
+  border: 2px solid #2daeea;
   padding: 15px 20%;
   text-decoration: none;
+  border-radius: 10px;
   color: #333
 }
 
 .back-btn {
   background: #aaa;
-  border: 1px solid #999;
+  border: 2px solid #999;
   padding: 15px 20%;
   text-decoration: none;
+  border-radius: 10px;
   color: #333
 }
 
 .score-delete-btn, 
 .course-delete-btn {
   background: rgb(212, 116, 116);
-  border: 1px solid rgb(226, 63, 63);
+  border: 2px solid rgb(226, 63, 63);
   padding: 15px 20%;
   text-decoration: none;
+  border-radius: 10px;
   color: #333
 }
 
 .challenge-btn {
   background: gold;
-  border: 1px solid goldenrod;
+  border: 2px solid goldenrod;
   padding: 15px 20%;
   text-decoration: none;
+  border-radius: 10px;
   color: #333
 }
 
 .user-edit-btn {
   background: green;
-  border: 1px solid darkgreen;
+  border: 2px solid darkgreen;
   padding: 15px 20%;
   text-decoration: none;
+  border-radius: 10px;
   color: #333
 }
 
@@ -194,216 +264,28 @@
 .rank-tab-btn:hover {
   opacity: 0.75;
 }
-
-
 /* /下部ボタン */
 
-/* フォーム */
-.form-wrap, 
-.user-page {
-  padding: 5vh 5vw;
-  width: 60%;
-  background-color: white;
-  padding-bottom: 70px;
-  margin: 0 auto;
-}
-
-.form-header {
-  width: 100%;
-  height: 120px;
-  text-align: center;
-}
-
-.form-header-text {
-  text-align: center;
-  font-size: 24px;
-  color: darkcyan;
-  line-height: 100px;
-  border-bottom: 1px solid #f5f5f5;
-  font-weight: bold;
-}
-
-.challenge-mode-text {
-  animation: flash 1.5s linear infinite;
-  text-align: center;
-  font-size: 20px;
-  color: goldenrod;
-  font-weight: bold;
-  padding-bottom: 3vh;
-}
-
-@keyframes flash {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-
-.indispensable {
-  background: #ea352d;
-  margin-left: 2px;
-  padding: 3px;
-  border-radius: 2px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.info-text {
-  font-size: 12px;
-  color: #B00;
-}
-
-.form-check-box {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.input-info,
-.comment-warn, 
-.course-warn {
-  font-size: 14px;
-  margin-left: 5px;
-}
-
-.input-hidden {
-  display: none;
-}
-
-.img-upload {
-  width: 60%;
-  margin: 0 auto;
-}
-
-.click-upload {
-  margin: 5px 0;
-  min-width: 250px;
-}
-
-.click-upload > p {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.input-birth-wrap, 
-.form-time {
-  display: flex;
-}
-
-.input-course-feature {
-  width: 60vw;
-}
-
-.unit {
-  padding-right: 5px;
-}
-
-#time {
-  text-align: right;
-}
-/* /フォーム */
-
-/* scores/index */
-.score-content {
-  padding: 5vh 5vw;
-  display: flex;
-}
-
-.score-img {
-  height: 200px;
-  width: 200px;
-}
-
-.score-content .score-img:hover {
-  opacity: 0.75;
-}
-
+/* 画像 */
 .score-img-content {
   text-align: center;
 }
 
-.score-info-upper, .score-info-lower {
-  display: flex;
-  height: 100px;
-  align-items: center;
-  padding-left: 30px;
+.show-score-img {
+  height: 80%;
+  width: 80%;
+  padding: 20px;
 }
 
-.score-distance, .score-time, .score-time-per-km, .score-nickname, .star-btn, .comment-info {
-  height: 30px;
-  width: 10vw;
-  padding-left: 20px;
+.index-score-img:hover {
+  opacity: 0.75;
 }
+/* /画像 */
 
-.no-score {
-  width: 100vw;
-  height: calc(100vh - 125px);
-  background: linear-gradient(to top, rgba(151, 217, 225, 0.8) 0%, rgba(240, 240, 240, 0.8) 100%),url(top-page.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  text-align: center;
-}
-
-.no-score-content {
-  padding: 10vh;
-}
-
-.no-score-text {
-  font-size: 5vw;
-  font-weight: bold;
-  font-family: 'HiraMinProN-W6';
-  color: #333;
-}
-
-.no-score-btn {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20vh;
-}
-
-.no-score-btn-sign-in,
-.no-score-btn-sign-up,
-.no-score-btn-new-score {
-  background: skyblue;
-  border: 1px solid #2daeea;
-  width: 25%;
-  height: 50px;
-  font-size: 20px;
-  text-decoration: none;
-  color: white;
-  line-height: 50px;
-  padding: 15px 10vw;
-}
-/* /scores/index */
-
-/* scores/show */
-.score-show {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5vh 0;
-}
-
+/* テーブル */
 .detail-table {
-  margin-bottom: 30px;
-  width: 60vw;
+  margin-bottom: 50px;
+  width: 100%;
 }
 
 .detail-item {
@@ -420,22 +302,13 @@
   border: 1px solid #dedede;
   font-size: 14px;
 }
+/* /テーブル */
 
-.comments {
-  margin-top: 8vh;
-}
-
+/* コメント */
 .comment-box {
+  width: 100%;
   display: flex;
-}
-
-.sub-title, 
-.course-title, 
-.comment-title {
-  color: #0ac;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
+  margin: 0 auto;
 }
 
 .my-comment {
@@ -473,6 +346,7 @@
 }
 
 .guests-comment {
+  text-align: left;
   width: 100%;
   overflow: hidden;
 }
@@ -524,48 +398,148 @@
   border-radius: 100px;
   margin: auto 5px;
 }
-/* comment-warn◯ */
+/* /コメント */
 
-/* /scores/show */
+/* フォーム */
+.form-contents {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0 30px;
+}
+
+.indispensable {
+  background: #ea352d;
+  margin-left: 2px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.select-box {
+  padding: 5px 15px 5px 5px;
+}
+
+#date, #distance {
+  padding-left: 5px;
+}
+
+.input-hidden {
+  display: none;
+}
+
+.click-upload > p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.info-text {
+  font-size: 12px;
+  color: #B00;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.text-box {
+  text-align: center;
+}
+
+.form-check-box {
+  display: flex;
+  align-items: center;
+}
+
+.input-birth-wrap, 
+.form-time {
+  display: flex;
+}
+
+#profile, 
+.input-course-feature {
+  padding: 5px;
+  width: 100%;
+  height: 100px;
+}
+
+.unit {
+  padding-right: 5px;
+}
+
+.answer {
+  margin-bottom: 30px;
+}
+
+.input-info,
+.comment-warn, 
+.course-warn {
+  font-size: 14px;
+  margin-left: 5px;
+  text-align: left;
+}
+
+#time {
+  text-align: right;
+}
+
+.challenge-mode-text {
+  animation: flash 1.5s linear infinite;
+  text-align: center;
+  font-size: 20px;
+  color: goldenrod;
+  font-weight: bold;
+  padding-bottom: 3vh;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/* /フォーム */
 
 /* scores/search */
-.search {
-  margin: 5vh 5vw;
-  width: 60%;
-  padding-top: 20px;
-  padding-bottom: 70px;
-  margin: 0 auto;
-}
-
 .list-search {
   margin: 0 auto;
+  padding-top: 20px;
+  width: 80%;
 }
 
-.search-row {
-  padding: 0 5vw 20px;
-}
-
-#date-min, 
-#date-max {
-  width: 160px;
+.search-item {
+  padding-top: 20px;
 }
 
 #distance-min, 
 #distance-max {
   width: 80px;
+  text-align: right;
 }
 /* /scores/search */
 
 /* scores/list, rank */
 .list, 
 .rank {
-  margin: 5vh auto;
-  width: 80vw;
+  width: 100vw;
 }
 
-.list-table, 
-.rank-table {
+.list-display {
   margin: 0 auto;
+  padding-top: 20px;
 }
 
 .list-item-row, 
@@ -593,7 +567,7 @@
 
 .list-item,
 .list-value {
-  width: calc(100% / 8);
+  width: calc(100% / 6);
   text-align: center;
 }
 
@@ -632,11 +606,9 @@
 
 .rank-content {
   margin-top: 50px; 
-  padding-bottom: 40px;
   background-color: #fff;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
   margin: 2vh auto;
-  width: 80vw;
+  width: 80%;
 }
 
 .rank-tab-btn {
@@ -687,6 +659,17 @@ input[name="rank-term"] {
 }
 /* /scores/list, rank */
 
+/* user */
+.user-score-term, 
+.user-score-list {
+  padding-bottom: 50px;
+}
+
+.user-page-contents {
+  padding-top: 20px;
+}
+/* /user */
+
 /* フッター */
 .top-page-footer {
   height: 50px;
@@ -697,3 +680,123 @@ input[name="rank-term"] {
   font-family: sans-serif;
 }
 /* /フッター */
+
+/* scores/index */
+.score-content {
+  display: flex;
+}
+
+.index-score-img {
+  max-width: 240px;
+}
+
+.index-nickname, 
+.table-nickname, 
+.comment-nickname, 
+.list-nickname, 
+.list-score-id, 
+.rank-nickname, 
+.show-score-id {
+  color: #333;
+  font-weight: bold;
+}
+
+.index-nickname:hover, 
+.list-nickname:hover, 
+.list-score-id:hover, 
+.rank-nickname:hover, 
+.list-score-id:hover { 
+  opacity: 0.75;
+}
+
+
+.score-info-upper, .score-info-lower {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.update-time, .score-nickname, .comment-info, .score-distance, .score-time, .score-time-per-km {
+  height: 30px;
+  width: 10vw;
+  padding-left: 20px;
+}
+
+.update-time {
+  color: #777;
+}
+
+.no-score {
+  width: 100vw;
+  height: calc(100vh - 125px);
+  background: linear-gradient(to top, rgba(151, 217, 225, 0.8) 0%, rgba(240, 240, 240, 0.8) 100%),url(top-page.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top 70px center;
+  text-align: center;
+  padding-top: 75px;
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.no-score-content {
+  padding: 10vh;
+  animation: fade-up 2s;
+  opacity: 0;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+}
+
+.no-score-text {
+  font-size: 5vw;
+  font-weight: bold;
+  font-family: 'HiraMinProN-W6';
+  color: #666;
+}
+
+.no-score-btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20vh;
+  opacity: 0;
+  animation: fade-up 2s;
+  animation-delay: 2.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }  
+}  
+
+.no-score-btn-sign-in,
+.no-score-btn-sign-up,
+.no-score-btn-new-score {
+  border-radius: 10px;
+  background: skyblue;
+  border: 1px solid #2daeea;
+  width: 25%;
+  height: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  line-height: 50px;
+  padding: 15px 10vw;
+}
+/* /scores/index */
