@@ -604,6 +604,21 @@
   color: white;
 }
 
+.list-result {
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.result-total-count {
+  color: darkblue;
+  font-weight: bold;
+}
+
+.list-current-user, 
+.rank-current-user {
+  background: rgba(0, 200, 200, 0.2);
+}
 .rank-content {
   margin-top: 50px; 
   background-color: #fff;
@@ -657,6 +672,25 @@ input[name="rank-term"] {
   background-color: #5ab4bd;
   color: #fff;
 }
+
+.rank-value-row:first-child .rank-place-text {
+  background: linear-gradient(0deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
+.rank-value-row:nth-child(2) .rank-place-text {
+  background: linear-gradient(0deg, #757575 0%, #9E9E9E 45%, #E8E8E8 70%, #9E9E9E 85%, #757575 90% 100%);
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
+.rank-value-row:nth-child(3) .rank-place-text {
+  background: linear-gradient(0deg, #6d491a 0%, #956c3c 45%, #c2a990 70%, #956c3c 85%, #6d491a 90% 100%);
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
 /* /scores/list, rank */
 
 /* user */
@@ -686,9 +720,24 @@ input[name="rank-term"] {
   display: flex;
 }
 
-.index-score-img {
+.lists:first-child {
+  margin-top: 70px;
+}
+
+.score-img-content {
+  width: 40%;
   max-width: 240px;
 }
+
+.index-score-img {
+  width: 100%;
+}
+
+.score-info {
+  width: 60%;
+  max-width: 360px;
+}
+
 
 .index-nickname, 
 .table-nickname, 
@@ -712,14 +761,16 @@ input[name="rank-term"] {
 
 .score-info-upper, .score-info-lower {
   display: flex;
+  width: 100%;
   height: 100px;
+  max-width: 360px;
   align-items: center;
-  padding-left: 30px;
 }
 
 .update-time, .score-nickname, .comment-info, .score-distance, .score-time, .score-time-per-km {
   height: 30px;
-  width: 10vw;
+  width: calc(100% / 3);
+  max-width: 120px;
   padding-left: 20px;
 }
 
@@ -800,3 +851,30 @@ input[name="rank-term"] {
   padding: 15px 10vw;
 }
 /* /scores/index */
+
+/* ページネーション */
+.pagination {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+
+.first, .prev, .next, .last, .page {
+  border: 1px solid #888;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+.pagination > .current {
+  background: skyblue;
+}
+
+.pagination-btn {
+  color: #333;
+  text-decoration: none;
+}
+
+.pagination-btn:hover {
+  opacity: 0.75;
+}
+/* /ページネーション */
