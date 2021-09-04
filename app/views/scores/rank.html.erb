@@ -22,13 +22,17 @@
             <th class="rank-item"><%= "ランナー" %></th>
             <th class="rank-item"><%= "総距離" %></th>
             <th class="rank-item"><%= "総時間" %></th>
-            <th class="rank-item"><%= "回数" %></th>
+            <th class="rank-item"><%= "走行回数" %></th>
           </tr>
         </thead>
         <tbody>
           <% @sort_distance_year.each.with_index(1) do |user, i| %>
-            <tr class="rank-value-row">
-              <td id="rank-place" class="rank-value"><%= i %></td>
+            <% if current_user.id == user.id %>
+              <tr class="rank-value-row rank-current-user">
+            <% else %>
+              <tr class="rank-value-row">
+            <% end %>
+              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_year).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_year).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
@@ -46,13 +50,17 @@
             <th class="rank-item"><%= "ランナー" %></th>
             <th class="rank-item"><%= "総距離" %></th>
             <th class="rank-item"><%= "総時間" %></th>
-            <th class="rank-item"><%= "回数" %></th>
+            <th class="rank-item"><%= "走行回数" %></th>
           </tr>
         </thead>
         <tbody>
           <% @sort_distance_month.each.with_index(1) do |user, i| %>
-            <tr class="rank-value-row">
-              <td id="rank-place" class="rank-value"><%= i %></td>
+            <% if current_user.id == user.id %>
+              <tr class="rank-value-row rank-current-user">
+            <% else %>
+              <tr class="rank-value-row">
+            <% end %>
+              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_month).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_month).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
@@ -70,13 +78,17 @@
             <th class="rank-item"><%= "ランナー" %></th>
             <th class="rank-item"><%= "総距離" %></th>
             <th class="rank-item"><%= "総時間" %></th>
-            <th class="rank-item"><%= "回数" %></th>
+            <th class="rank-item"><%= "走行回数" %></th>
           </tr>
         </thead>
         <tbody>
           <% @sort_distance_week.each.with_index(1) do |user, i| %>
-            <tr class="rank-value-row">
-              <td id="rank-place" class="rank-value"><%= i %></td>
+            <% if current_user.id == user.id %>
+              <tr class="rank-value-row rank-current-user">
+            <% else %>
+              <tr class="rank-value-row">
+            <% end %>
+              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_week).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_week).sum(:time)).utc.strftime('%-H:%M:%S') %></td>

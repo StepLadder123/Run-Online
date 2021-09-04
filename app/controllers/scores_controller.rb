@@ -5,7 +5,7 @@ class ScoresController < ApplicationController
   before_action :score_all, only: [:search, :rank]
 
   def index
-    @scores = Score.includes(:user).order("created_at DESC")
+    @scores = Score.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
   
   def new
@@ -39,7 +39,7 @@ class ScoresController < ApplicationController
   end
   
   def list
-    @results = @s.result
+    @results = @s.result.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def rank

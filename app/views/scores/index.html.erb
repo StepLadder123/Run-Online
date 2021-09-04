@@ -3,17 +3,17 @@
 <%# スコア一覧 %>
 <div class='score-index'>
   <% if user_signed_in? %>
-    <ul class='score-lists'>
-      <% if @scores.exists? %>
+    <% if @scores.exists? %>
+      <ul class='score-lists'>
         <% @scores.each do |score| %>
           <div class="score-contents">
-            <li class='list'>
+            <li class='lists'>
               <div class="score-content">
-                <%= link_to score_path(score.id) do %>
-                  <div class='score-img-content'>
+                <div class='score-img-content'>
+                  <%= link_to score_path(score.id) do %>
                     <%= image_tag score.image, class: "index-score-img" %>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
                 <div class='score-info'>
                   <div class="score-info-upper">
                     <div class="update-time">
@@ -47,20 +47,21 @@
             </li>
           </div>
         <% end %>
-      <% else %>
-        <div class="no-score">
-          <div class="no-score-content">
-            <span class="no-score-text">さぁ走りだそう</span>
-          </div>
-          <div class="no-score-btn">
-            <div>
-              <%= link_to "アクティビティ登録", new_score_path, class:"no-score-btn-new-score" %><br><br>
-              <span class="no-score-btn-info">ランニングしたら登録はこちら</span>
-            </div>
+      </ul>
+    <% else %>
+      <div class="no-score">
+        <div class="no-score-content">
+          <span class="no-score-text">さぁ走りだそう</span>
+        </div>
+        <div class="no-score-btn">
+          <div>
+            <%= link_to "アクティビティ登録", new_score_path, class:"no-score-btn-new-score" %><br><br>
+            <span class="no-score-btn-info">ランニングしたら登録はこちら</span>
           </div>
         </div>
-      <% end %>
-    </ul>
+      </div>
+    <% end %>
+    <%= paginate @scores %>
   <% else %>
     <div class="no-score">
       <div class="no-score-content">
