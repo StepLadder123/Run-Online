@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   private
   
   def set_user
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def user_score
@@ -38,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:username)
+    params.fetch(:user, {}).permit(:email, :nickname, :birthday, :p_birthday, :sex_id, :p_sex, :area_id, :p_area, :profile)
   end
 end
