@@ -18,9 +18,8 @@ class CoursesController < ApplicationController
 
   def destroy
     course = Course.find_by(id: params[:id], score_id: params[:score_id])
-    move_to_index
     course.destroy
-    redirect_to score_path(@score.id)
+    redirect_to score_path(params[:score_id])
   end
 
   def challenge
