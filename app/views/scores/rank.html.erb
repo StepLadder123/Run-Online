@@ -34,9 +34,9 @@
             <% end %>
               <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
-              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_year).sum(:distance)) %></td>
-              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_year).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
-              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_year).count %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_year).where(private: false).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_year).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_year).where(private: false).count %></td>
             </tr>
           <% end %>
         </tbody>
@@ -62,9 +62,9 @@
             <% end %>
               <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
-              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_month).sum(:distance)) %></td>
-              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_month).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
-              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_month).count %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_month).where(private: false).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_month).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_month).where(private: false).count %></td>
             </tr>
           <% end %>
         </tbody>
@@ -90,9 +90,9 @@
             <% end %>
               <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
-              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_week).sum(:distance)) %></td>
-              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_week).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
-              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_week).count %></td>
+              <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_week).where(private: false).sum(:distance)) %></td>
+              <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_week).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
+              <td id="rank-count" class="rank-value"><%= user.scores.where(date: @term_week).where(private: false).count %></td>
             </tr>
           <% end %>
         </tbody>

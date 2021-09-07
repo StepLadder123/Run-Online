@@ -41,8 +41,10 @@
     <p>※非公開のアクティビティは含まれません。</p>
     <%= paginate @results %>
   </div>
-  <div class="back-search-btn">
-    <%= link_to '検索画面にもどる', search_scores_path, class: "back-search-btn-text" %>
+  <div class="transition-btn">
+    <div class="btn-content">
+      <%= link_to '検索画面にもどる', search_scores_path, class:"back-btn" %>
+    </div>
   </div>
 </div>
 <%= render "shared/main_footer" %>
