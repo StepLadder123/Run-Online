@@ -10,9 +10,6 @@ class Score < ApplicationRecord
   with_options presence: true do
     validates :image
     validates :date
-    validates :hour
-    validates :minute
-    validates :second
   end
   
   with_options presence: true, numericality: { greater_than: 0} do
