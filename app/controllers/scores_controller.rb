@@ -63,6 +63,18 @@ class ScoresController < ApplicationController
   end
   
   def score_calc
+    if @score.hour == nil
+      @score.hour = 0
+    end
+    if @score.minute == nil
+      @score.minute = 0
+    end
+    if @score.second == nil
+      @score.second = 0
+    end
+    if @score.distance == nil
+      @score.distance = 0
+    end
     @score[:time] = (@score.hour * 60 + @score.minute) * 60 +@score.second
     @score[:lap] = @score.time / @score.distance
   end
