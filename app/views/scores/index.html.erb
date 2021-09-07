@@ -17,7 +17,9 @@
                 <div class='score-info'>
                   <div class="score-info-upper">
                     <div class="update-time">
-                      <%= "●日前" %>
+                      <time datetime="{{ score.created_at}}">
+                        <%= "#{time_ago_in_words(score.created_at)}前" %>
+                      </time>
                     </div>
                     <div class="score-nickname">
                       <span class="unit">runner</span><br>
