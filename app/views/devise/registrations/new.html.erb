@@ -10,7 +10,7 @@
   <div class="form-contents">
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
-    <%= devise_error_messages! %>
+    <%= render 'shared/error_messages', model: f.object %>
 
       <%# ニックネーム %>
       <div class="form-group">
@@ -55,16 +55,16 @@
         </div>
         <div class='input-birth-wrap'>
           <%= raw sprintf(
-            f.date_select(
-              :birthday,
+                      f.date_select(
+                        :birthday,
                         class:'select-birth',
                         id:"birthday",
                         use_month_numbers: true,
                         prompt:'--',
                         start_year: 1930,
-                      end_year: (Time.now.year - 5),
+                        end_year: (Time.now.year - 5),
                         date_separator: '%s'),
-                      "<p> 年　</p>", "<p> 月　</p>") + "<p> 日 </p>" %>
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
         </div>
         <div class="form-check-box">
           <%= f.check_box :p_birthday, class:"input-default", id:"p-birthday" %><p class="input-info">年齢を公開しない場合はチェック</p>
