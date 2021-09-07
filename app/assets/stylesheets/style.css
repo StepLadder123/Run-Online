@@ -210,7 +210,7 @@
   border: 2px solid #2daeea;
   padding: 15px 20%;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #333
 }
 
@@ -219,7 +219,7 @@
   border: 2px solid #999;
   padding: 15px 20%;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #333
 }
 
@@ -229,7 +229,7 @@
   border: 2px solid rgb(226, 63, 63);
   padding: 15px 20%;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #333
 }
 
@@ -238,7 +238,7 @@
   border: 2px solid goldenrod;
   padding: 15px 20%;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #333
 }
 
@@ -247,7 +247,7 @@
   border: 2px solid darkgreen;
   padding: 15px 20%;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #333
 }
 
@@ -256,7 +256,6 @@
 .score-delete-btn:hover, 
 .course-delete-btn:hover, 
 .challenge-btn:hover, 
-.back-search-btn:hover,
 .comment-btn:hover, 
 .no-score-btn-sign-in:hover,
 .no-score-btn-sign-up:hover,
@@ -584,24 +583,6 @@
 #rank-time, 
 #rank-count {
   text-align: right;
-}
-
-.back-search-btn {
-  width: 60px;
-  height: 60px;
-  background: rgba(55, 55, 55, 0.6);
-  text-align: center;
-  border-radius: 4%;
-  bottom: 75px;
-  left: 25px;
-  position: fixed;
-  padding: 15px;
-}
-
-.back-search-btn-text {
-  font-size: 14px;
-  text-decoration: none;
-  color: white;
 }
 
 .list-result {
