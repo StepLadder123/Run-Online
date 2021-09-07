@@ -56,3 +56,17 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        birthday: 誕生日
+        sex_id: 性別
+        area_id: 主なランエリア
+      score:
+        image: ルート画像
+        date: ランニング日付
+        distance: 距離
+        time: タイム
+        area_id: ランエリア
