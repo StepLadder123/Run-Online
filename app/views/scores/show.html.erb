@@ -31,19 +31,7 @@
         </div>
       <% end %>
     <% else %>
-      <% if current_user.id == @score.user_id %>
-        <div class="sub-title">
-          <h2 class="sub-title-text">
-            コース登録
-          </h2>
-        </div>
-        <div class="btn-content">
-          <%= link_to "コースを登録する", new_score_course_path(@score.id), class:"next-btn" %>
-        </div>
-        <div class="caution">
-          <p class="course-warn">※コースを登録すると他のユーザーがあなたの記録に挑戦できます。</p>
-        </div>
-      <% else %>
+      <% if current_user.id != @score.user_id %>
         <div class="sub-title">
           <h2 class="sub-title-text">
             登録コースに挑戦
@@ -52,6 +40,22 @@
           <h3 class="answer">
             コース登録されていません
           </h3>
+      <% else %>
+        <div class="sub-title">
+          <h2 class="sub-title-text">
+            コース登録
+          </h2>
+        </div>
+        <% if @score.private %>
+          <div class="answer">非公開アクティビティはコース登録できません。</div>          
+        <% else %>
+          <div class="btn-content">
+            <%= link_to "コースを登録する", new_score_course_path(@score.id), class:"next-btn" %>
+          </div>
+          <div class="caution">
+            <p class="course-warn">※コースを登録すると他のユーザーがあなたの記録に挑戦できます。</p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -63,7 +67,7 @@
       </h2>
     </div>
       <% unless @comments.exists? %>
-        <h3 class="answer">
+        <div class="answer">
           まだコメントはありません
         </div>
       <% end %>

@@ -73,7 +73,12 @@
       <%# 非公開設定 %>
       <div class="form-group">
         <div class="form-check-box">
-          <%= f.check_box :private, class:"input-default", id:"private" %><p class="input-info">アクティビティを公開しない場合はチェック</p>
+          <% if current_user.p_birthday || current_user.p_sex || current_user.p_area %>
+            <%= f.check_box :private, class:"input-default", id:"private", checked: true %><p class="input-info" >アクティビティを公開しない場合はチェック</p>
+            <p class="info-text">ユーザー情報を非公開に設定していても、チェックを外すと検索対象に表示されますのでご注意ください。</p>
+          <% else %>
+            <%= f.check_box :private, class:"input-default", id:"private" %><p class="input-info">アクティビティを公開しない場合はチェック</p>
+          <% end %>
         </div>
       </div>
       <%# /非公開設定 %>
