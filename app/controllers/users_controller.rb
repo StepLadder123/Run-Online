@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @scores = Score.all.where(user_id: params[:id]).order(date: :desc, id: :desc)
+    if current_user.id == @user.id
+      @scores = Score.all.where(user_id: params[:id]).order(date: :desc, id: :desc)
+    else
+      @scores = Score.all.where(user_id: params[:id]).where(private: false).order(date: :desc, id: :desc)
+    end
     user_score
   end
   
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    if current_user.update(user_params)
+    if @user.update(user_params)
       redirect_to user_path(current_user)
     else
       render :edit

@@ -2,10 +2,9 @@ class ScoresController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_score, only: [:show, :destroy]
   before_action :search_score, only: [:search, :list]
-  before_action :score_all, only: [:search, :rank]
 
   def index
-    @scores = Score.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    @scores = Score.includes(:user).where(private: false).order("created_at DESC").page(params[:page]).per(10)
   end
   
   def new
@@ -24,6 +23,7 @@ class ScoresController < ApplicationController
   
   def show
     @scores = Score.all
+    not_move_to_show
     @comment = Comment.new
     @comments = @score.comments.includes(:user)
     @course = @score.course
@@ -36,19 +36,20 @@ class ScoresController < ApplicationController
   end
   
   def search
+    @scores = Score.all
   end
   
   def list
-    @results = @s.result.order("created_at DESC").page(params[:page]).per(10)
+    @results = @s.result.where(private: false).order("created_at DESC").page(params[:page]).per(10)
   end
   
   def rank
     @term_year = Time.now.all_year
     @term_month = Time.now.all_month
     @term_week = Time.now.all_week
-    @sort_distance_year = User.joins(:scores).where(scores: {date: @term_year}).group(:id).order('sum(scores.distance) desc')
-    @sort_distance_month = User.joins(:scores).where(scores: {date: @term_month}).group(:id).order('sum(scores.distance) desc')
-    @sort_distance_week = User.joins(:scores).where(scores: {date: @term_week}).group(:id).order('sum(scores.distance) desc')
+    @sort_distance_year = User.joins(:scores).where(scores: {private: false}).where(scores: {date: @term_year}).group(:id).order('sum(scores.distance) desc')
+    @sort_distance_month = User.joins(:scores).where(scores: {private: false}).where(scores: {date: @term_month}).group(:id).order('sum(scores.distance) desc')
+    @sort_distance_week = User.joins(:scores).where(scores: {private: false}).where(scores: {date: @term_week}).group(:id).order('sum(scores.distance) desc')
   end
   
   private
@@ -64,6 +65,12 @@ class ScoresController < ApplicationController
   def score_calc
     @score[:time] = (@score.hour * 60 + @score.minute) * 60 +@score.second
     @score[:lap] = @score.time / @score.distance
+  end
+  
+  def not_move_to_show
+    if current_user.id != @score.user_id && @score.private
+      redirect_to root_path
+    end
   end
 
   def challenge_count
@@ -82,8 +89,5 @@ class ScoresController < ApplicationController
   def search_score
     @s = Score.ransack(params[:q])
   end
-
-  def score_all
-    @scores = Score.all
-  end
+  
 end
