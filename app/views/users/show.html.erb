@@ -25,15 +25,27 @@
           </tr>
           <tr>
             <th class="detail-item">年齢</th>
-            <td class="detail-value"><%= (Date.today.strftime("%Y%m%d").to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
+            <% if @user.p_birthday %>
+              <td class="detail-value"><%= "非公開" %></td>
+            <% else %>
+              <td class="detail-value"><%= (Date.today.strftime("%Y%m%d").to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000 %></td>
+            <% end %>
           </tr>
           <tr>
             <th class="detail-item">性別</th>
-            <td class="detail-value"><%= @user.sex_id %></td>
+            <% if @user.p_sex %>
+              <td class="detail-value"><%= "非公開" %></td>
+            <% else %>
+              <td class="detail-value"><%= @user.sex_id %></td>
+            <% end %>
           </tr>
           <tr>
             <th class="detail-item">主なランエリア</th>
-            <td class="detail-value"><%= @user.area_id %></td>
+            <% if @user.p_area %>
+              <td class="detail-value"><%= "非公開" %></td>
+            <% else %>
+              <td class="detail-value"><%= @user.area_id %></td>
+            <% end %>
           </tr>
           <tr>
             <th class="detail-item">自己紹介</th>
