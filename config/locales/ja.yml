@@ -63,10 +63,13 @@ ja:
         nickname: ニックネーム
         birthday: 誕生日
         sex_id: 性別
-        area_id: 主なランエリア
+        area_id: ランエリア
       score:
         image: ルート画像
         date: ランニング日付
         distance: 距離
+        hour: 時間
+        minute: 分
+        second: 秒
         time: タイム
         area_id: ランエリア
