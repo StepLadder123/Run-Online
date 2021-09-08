@@ -17,6 +17,15 @@ class Score < ApplicationRecord
     validates :time
   end
 
+  with_options numericality: { less_than: 24 } do
+    validates :hour
+  end
+
+  with_options numericality: { less_than: 60 } do
+    validates :minute
+    validates :second
+  end
+
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :area_id
   end

@@ -119,7 +119,7 @@ RSpec.describe User, type: :model do
       it '主なランエリアが必須であること' do
         @user.area_id = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("主なランエリアcan't be blank")
+        expect(@user.errors.full_messages).to include("ランエリアcan't be blank")
       end
     end
   end
