@@ -105,28 +105,28 @@ RSpec.describe Score, type: :model do
         @score.hour = 24
         score_calc
         @score.valid?
-        expect(@score.errors.full_messages).to include("時間は24より小さい値にしてください")
+        expect(@score.errors.full_messages).to include("時間は24未満で入力してください")
       end
       
       it '分が60未満であること' do
         @score.minute = 60
         score_calc
         @score.valid?
-        expect(@score.errors.full_messages).to include("分は60より小さい値にしてください")
+        expect(@score.errors.full_messages).to include("分は60未満で入力してください")
       end
       
       it '秒が60未満であること' do
         @score.second = 60
         score_calc
         @score.valid?
-        expect(@score.errors.full_messages).to include("秒は60より小さい値にしてください")
+        expect(@score.errors.full_messages).to include("秒は60未満で入力してください")
       end
       
       it 'ランエリアが必須であること' do
         @score.area_id = ''
         score_calc
         @score.valid?
-        expect(@score.errors.full_messages).to include("ランエリアcan't be blank")
+        expect(@score.errors.full_messages).to include("ランエリアを選択してください")
       end
       
       it 'ユーザーが紐付いていないと登録できない' do

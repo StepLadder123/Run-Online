@@ -113,13 +113,13 @@ RSpec.describe User, type: :model do
       it '性別が必須であること' do
         @user.sex_id = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("性別can't be blank")
+        expect(@user.errors.full_messages).to include("性別を選択してください")
       end
       
       it '主なランエリアが必須であること' do
         @user.area_id = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("ランエリアcan't be blank")
+        expect(@user.errors.full_messages).to include("ランエリアを選択してください")
       end
     end
   end

@@ -17,16 +17,16 @@ class Score < ApplicationRecord
     validates :time
   end
 
-  with_options numericality: { less_than: 24 } do
+  with_options numericality: { less_than: 24, message: "は24未満で入力してください" } do
     validates :hour
   end
 
-  with_options numericality: { less_than: 60 } do
+  with_options numericality: { less_than: 60, message: "は60未満で入力してください" } do
     validates :minute
     validates :second
   end
 
-  with_options numericality: { other_than: 1, message: "can't be blank" } do
+  with_options numericality: { other_than: 1, message: "を選択してください" } do
     validates :area_id
   end
 end
