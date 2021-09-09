@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2021_09_01_093721) do
 
   create_table "scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "distance", null: false
-    t.integer "hour", default: 0, null: false
-    t.integer "minute", default: 0, null: false
-    t.integer "second", default: 0, null: false
+    t.integer "hour", null: false
+    t.integer "minute", null: false
+    t.integer "second", null: false
     t.integer "area_id", null: false
     t.date "date", null: false
     t.boolean "private"
