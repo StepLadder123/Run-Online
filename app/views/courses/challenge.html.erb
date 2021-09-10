@@ -75,7 +75,7 @@
           <label class="form-text">エリア</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.number_field :area_id, class:"input-hidden", id:"challenge", value: @score_cf.user_id, readonly: true %>
+        <%= f.number_field :area_id, class:"input-hidden", id:"challenge", value: @score_cf.area_id, readonly: true %>
         <%# f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"area", selected: @score_cf.area_id, readonly: true}) %>
         <%= @score_cf.area.name %>
       </div>
