@@ -318,8 +318,7 @@
 
 .comment-my-nickname {
   float: right;
-  margin-left: -50px;
-  width: 40px;
+  margin-left: -40px;
 }
 
 .comment-my-text {
@@ -352,8 +351,7 @@
 
 .comment-guests-nickname {
   float: left;
-  margin-right: -50px;
-  width: 40px;
+  margin-right: -40px;
 }
 
 .comment-guests-text {
