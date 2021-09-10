@@ -36,7 +36,7 @@
             <% if @user.p_sex %>
               <td class="detail-value"><%= "非公開" %></td>
             <% else %>
-              <td class="detail-value"><%= @user.sex_id %></td>
+              <td class="detail-value"><%= Sex.find(@user.sex_id).name %></td>
             <% end %>
           </tr>
           <tr>
@@ -44,7 +44,7 @@
             <% if @user.p_area %>
               <td class="detail-value"><%= "非公開" %></td>
             <% else %>
-              <td class="detail-value"><%= @user.area_id %></td>
+              <td class="detail-value"><%= Area.find(@user.area_id).name %></td>
             <% end %>
           </tr>
           <tr>
