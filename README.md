@@ -186,6 +186,13 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
 [![Image from Gyazo](https://i.gyazo.com/a0f2202cef77922adc203fdbb901b81a.gif)](https://gyazo.com/a0f2202cef77922adc203fdbb901b81a)
 
+  - 同率順位時の表示
+
+  総距離が同じ場合は同順位として表示され、1〜3位のメダル表示も順位に則して表示される。
+  [![Image from Gyazo](https://i.gyazo.com/648d627377e015a991db6e8aa3ecc6d7.jpg)](https://gyazo.com/648d627377e015a991db6e8aa3ecc6d7)
+  [![Image from Gyazo](https://i.gyazo.com/bcc0af620084258638901d554a2ccd25.jpg)](https://gyazo.com/bcc0af620084258638901d554a2ccd25)
+  [![Image from Gyazo](https://i.gyazo.com/2c4eb77bc7318909f51cfd6517f9498d.png)](https://gyazo.com/2c4eb77bc7318909f51cfd6517f9498d)
+
 - コメント投稿
 
   - コメント未投稿時
