@@ -26,13 +26,45 @@
           </tr>
         </thead>
         <tbody>
+          <% last_distance = 0 %>
+          <% j = 1 %>
           <% @sort_distance_year.each.with_index(1) do |user, i| %>
             <% if current_user.id == user.id %>
               <tr class="rank-value-row rank-current-user">
             <% else %>
               <tr class="rank-value-row">
             <% end %>
-              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
+              <% if i == 1 %>
+                <% last_distance = user.scores.where(date: @term_year).where(private: false).sum(:distance) %>
+              <% end %>
+              <% if user.scores.where(date: @term_year).where(private: false).sum(:distance) != last_distance %>
+                <% j = i %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+                <% last_distance = user.scores.where(date: @term_year).where(private: false).sum(:distance) %>
+              <% else %>
+                <% last_distance = user.scores.where(date: @term_year).where(private: false).sum(:distance) %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+              <% end %>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_year).where(private: false).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_year).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
@@ -54,13 +86,45 @@
           </tr>
         </thead>
         <tbody>
+          <% last_distance = 0 %>
+          <% j = 1 %>
           <% @sort_distance_month.each.with_index(1) do |user, i| %>
             <% if current_user.id == user.id %>
               <tr class="rank-value-row rank-current-user">
             <% else %>
               <tr class="rank-value-row">
             <% end %>
-              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
+              <% if i == 1 %>
+                <% last_distance = user.scores.where(date: @term_month).where(private: false).sum(:distance) %>
+              <% end %>
+              <% if user.scores.where(date: @term_month).where(private: false).sum(:distance) != last_distance %>
+                <% j = i %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+                <% last_distance = user.scores.where(date: @term_month).where(private: false).sum(:distance) %>
+              <% else %>
+                <% last_distance = user.scores.where(date: @term_month).where(private: false).sum(:distance) %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+              <% end %>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_month).where(private: false).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_month).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
@@ -82,13 +146,45 @@
           </tr>
         </thead>
         <tbody>
+          <% last_distance = 0 %>
+          <% j = 1 %>
           <% @sort_distance_week.each.with_index(1) do |user, i| %>
             <% if current_user.id == user.id %>
               <tr class="rank-value-row rank-current-user">
             <% else %>
               <tr class="rank-value-row">
             <% end %>
-              <td id="rank-place" class="rank-value"><span class="rank-place-text"><%= i %></span></td>
+              <% if i == 1 %>
+                <% last_distance = user.scores.where(date: @term_week).where(private: false).sum(:distance) %>
+              <% end %>
+              <% if user.scores.where(date: @term_week).where(private: false).sum(:distance) != last_distance %>
+                <% j = i %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+                <% last_distance = user.scores.where(date: @term_week).where(private: false).sum(:distance) %>
+              <% else %>
+                <% last_distance = user.scores.where(date: @term_week).where(private: false).sum(:distance) %>
+                <td id="rank-place" class="rank-value">
+                  <% if j == 1 %>
+                    <span class="rank-place-text-gold"><%= j %></span>
+                  <% elsif j == 2 %>
+                    <span class="rank-place-text-silver"><%= j %></span>
+                  <% elsif j == 3 %>
+                    <span class="rank-place-text-bronze"><%= j %></span>
+                  <% else %>
+                    <%= j %>
+                  <% end %>
+                </td>
+              <% end %>
               <td id="rank-nickname" class="rank-value"><%= link_to user.nickname, user_path(user.id), class: "rank-nickname" %></td>
               <td id="rank-distance" class="rank-value"><%=  sprintf("%1.2f", user.scores.where(date: @term_week).where(private: false).sum(:distance)) %></td>
               <td id="rank-time" class="rank-value"><%= Time.at(user.scores.where(date: @term_week).where(private: false).sum(:time)).utc.strftime('%-H:%M:%S') %></td>
