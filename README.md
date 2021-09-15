@@ -44,7 +44,8 @@ https://run-online-42195.herokuapp.com/
 https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD53I/edit#gid=282075926
 
 # 実装した機能についての画像やGIFおよびその説明
-- トップ画面
+
+## トップ画面
 
   - 未ログイン時
 
@@ -72,7 +73,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
     [![Image from Gyazo](https://i.gyazo.com/7ba9ef1ad2e3373c05eb6cb997c59471.gif)](https://gyazo.com/7ba9ef1ad2e3373c05eb6cb997c59471)
 
-- ユーザー登録
+## ユーザー登録
 
 ユーザー登録には、ニックネーム、メールアドレス、パスワード、確認尿パスワード、生年月日、年齢非公開チェック、性別、性別非公開チェック、主なランエリア、エリア非公開チェック、自己紹介を入力する。
 
@@ -84,7 +85,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
   [![Image from Gyazo](https://i.gyazo.com/2ccdd571fc7e90343200b9f181096fd1.jpg)](https://gyazo.com/2ccdd571fc7e90343200b9f181096fd1)
 
-- ユーザー詳細表示
+## ユーザー詳細表示
 
 ユーザー情報、期間別成績、アクティビティ別成績が表示される。ログインユーザーによって編集ボタンの表示有無が異なる。
 
@@ -104,11 +105,11 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
   
   [![Image from Gyazo](https://i.gyazo.com/b78dfab1e9a9eb59ea3a004300bd25c3.png)](https://gyazo.com/b78dfab1e9a9eb59ea3a004300bd25c3)
 
-- ユーザー編集
+## ユーザー編集
 
 [![Image from Gyazo](https://i.gyazo.com/09b8762e5f677de0d549fc962965d717.gif)](https://gyazo.com/09b8762e5f677de0d549fc962965d717)
 
-- アクティビティ登録
+## アクティビティ登録
 
   - ユーザー情報公開設定時
 
@@ -148,7 +149,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
     [![Image from Gyazo](https://i.gyazo.com/818108a110f4db5e7943c3aef3cb3801.gif)](https://gyazo.com/818108a110f4db5e7943c3aef3cb3801)
 
-- アクティビティ詳細表示
+## アクティビティ詳細表示
 
 コース画像、ユーザー名、日付、エリア、距離、タイム、ラップが表示される。
 
@@ -164,7 +165,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
   [![Image from Gyazo](https://i.gyazo.com/c229473b92bd0581d430dd16d9f6b594.png)](https://gyazo.com/c229473b92bd0581d430dd16d9f6b594)
 
-- アクティビティ検索
+## アクティビティ検索
 
 性別、年齢、日付、エリア、距離、タイム、ラップの条件で検索できる。非公開チェック有のアクティビティは検索対象外となる。検索結果は10件単位で表示される。
 
@@ -180,7 +181,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
   [![Image from Gyazo](https://i.gyazo.com/48f2a011e2a60ffd464cbc804c4fb622.gif)](https://gyazo.com/48f2a011e2a60ffd464cbc804c4fb622)
 
-- ユーザーランキング表示
+## ユーザーランキング表示
 
 総距離順にランキングを表示。年間、月間、週間でタブ分けされている。ログインユーザーの成績は水色で表示される。
 
@@ -193,7 +194,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
   [![Image from Gyazo](https://i.gyazo.com/bcc0af620084258638901d554a2ccd25.jpg)](https://gyazo.com/bcc0af620084258638901d554a2ccd25)
   [![Image from Gyazo](https://i.gyazo.com/2c4eb77bc7318909f51cfd6517f9498d.png)](https://gyazo.com/2c4eb77bc7318909f51cfd6517f9498d)
 
-- コメント投稿
+## コメント投稿
 
   - コメント未投稿時
 
@@ -215,7 +216,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
   [![Image from Gyazo](https://i.gyazo.com/3e8cf7e5a6a692895278c6cd471965f2.jpg)](https://gyazo.com/3e8cf7e5a6a692895278c6cd471965f2)
 
-- コース登録
+## コース登録
 
   - コース登録前
 
@@ -251,7 +252,7 @@ https://docs.google.com/spreadsheets/d/1d4LxlS7mQeuBKQQMRIN4bws9xFq7IkInmJCikUtD
 
     [![Image from Gyazo](https://i.gyazo.com/58928de8e8a48689cff9a6a7c732e143.png)](https://gyazo.com/58928de8e8a48689cff9a6a7c732e143)
 
-- コース挑戦
+## コース挑戦
 
 登録コース挑戦ようのアクティビティ登録画面が表示され、コース画像、日付、タイムを入力する。距離とエリアは登録されたコースの情報が自動で引き込まれる。挑戦機能はアクティビティの非公開設定が選択不可となる。
 
